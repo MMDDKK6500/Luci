@@ -70,13 +70,8 @@ struct ContentView: View {
             Text("\(speed)")
                 .foregroundColor(isEditing ? .red : .blue)
             
-            Button("Tap me!") {
-                animationAmount += 1
-            }
-            .padding(50)
-            .background(Color.red)
-            .foregroundColor(.white)
-            .clipShape(.buttonBorder)
+            // value [r para onde ir
+            NavigationLink("Tap me!", value: Rota.mistura)
             
         }
         .padding()

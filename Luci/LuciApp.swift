@@ -9,9 +9,37 @@ import SwiftUI
 
 @main
 struct LuciApp: App {
+    
+    @StateObject private var router = Router()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationStack(path: $router.path) {
+                
+                //SplashView()
+                
+                ContentView()
+                
+                .navigationDestination(for: Rota.self) { destino in
+                    switch destino {
+                    case .splash:
+                        //SplashView()
+                        MisturaView()
+                    case .mistura:
+                        MisturaView()
+                    case .transicao:
+                        //TransicaoView()
+                        MisturaView()
+                    case .resultado:
+                        //ResultadoView()
+                        MisturaView()
+                    case .saibamais:
+                        //NoticiasView()
+                        MisturaView()
+                    }
+                }
+            }
+            .environmentObject(router)
         }
     }
 }

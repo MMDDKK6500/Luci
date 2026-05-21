@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum Rota: Hashable {
+enum Rotas: Hashable {
     case splash
     case mistura
     case transicao

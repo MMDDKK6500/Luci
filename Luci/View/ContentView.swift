@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     
+    // USar essa página para ver coisas que tem como fazer
+    
     enum Flavor: String, CaseIterable, Identifiable {
         case chocolate, vanilla, strawberry
         var id: Self { self }
@@ -70,8 +72,9 @@ struct ContentView: View {
             Text("\(speed)")
                 .foregroundColor(isEditing ? .red : .blue)
             
-            // value [r para onde ir
-            NavigationLink("Tap me!", value: Rota.mistura)
+            // value é para onde ir
+            // Inclusive fica cinza se não estiver vendo da raiz
+            NavigationLink("Tap me!", value: Rotas.mistura)
             
         }
         .padding()

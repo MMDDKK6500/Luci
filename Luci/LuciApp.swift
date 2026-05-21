@@ -16,30 +16,31 @@ struct LuciApp: App {
         WindowGroup {
             NavigationStack(path: $router.path) {
                 
-                //SplashView()
+//                SplashView()
                 
                 ContentView()
                 
-                .navigationDestination(for: Rota.self) { destino in
+                .navigationDestination(for: Rotas.self) { destino in
                     switch destino {
                     case .splash:
-                        //SplashView()
+//                        SplashView()
                         MisturaView()
+                            .navigationTitle("Mistura")
+                            .navigationBarBackButtonHidden(true)
                     case .mistura:
                         MisturaView()
                     case .transicao:
-                        //TransicaoView()
+//                        TransicaoView()
                         MisturaView()
                     case .resultado:
-                        //ResultadoView()
+//                        ResultadoView()
                         MisturaView()
                     case .saibamais:
-                        //NoticiasView()
+//                        NoticiasView()
                         MisturaView()
                     }
                 }
             }
-            .environmentObject(router)
         }
     }
 }

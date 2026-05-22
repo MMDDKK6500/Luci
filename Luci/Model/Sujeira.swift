@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct Adicional {
+struct Sujeira: Hashable {
     let nome: String
     let receita: String
-
 }
 
-enum Adicionais {
-    static let tintaCaneta = Adicional(
+
+enum Sujeiras {
+    static let tintaCaneta = Sujeira(
         nome: "Álcool",
         receita: "Umedecer um pano com álcool e esfregar na área com tinta de caneta"
     )

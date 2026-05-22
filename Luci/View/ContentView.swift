@@ -55,7 +55,7 @@ struct ContentView: View {
                     Slider(
                         value: $speed,
                         in: 0...100,
-                        step: 50
+//                        step: 50
                     ) {
                         Text("Speed")
                     } minimumValueLabel: {

@@ -4,7 +4,8 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string></string>
+		<string>Asap-Italic.ttf</string>
+		<string>Asap.ttf</string>
 	</array>
 </dict>
 </plist>

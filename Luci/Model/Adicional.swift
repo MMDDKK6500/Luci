@@ -12,3 +12,10 @@ struct Adicional {
     let receita: String
 
 }
+
+enum Adicionais {
+    static let tintaCaneta = Adicional(
+        nome: "Álcool",
+        receita: "Umedecer um pano com álcool e esfregar na área com tinta de caneta"
+    )
+}

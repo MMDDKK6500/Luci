@@ -10,7 +10,7 @@ import Foundation
 import Combine
 
 
-// Colocar coisas como funções, lógica e tal.
+// Colocar coisas como funções, lógica e tal da página Mistura
 class MisturaViewModel: ObservableObject {
     
     func resultar(superfice: Superficie, tempo: Int, nivelSujeira: Int, adicional: Adicional) -> String {

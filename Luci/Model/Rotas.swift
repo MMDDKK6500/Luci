@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// Lista de quais telas temos
 enum Rotas: Hashable {
     case splash
     case mistura

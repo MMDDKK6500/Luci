@@ -12,6 +12,7 @@ struct Superficie: Hashable {
     let produtos: [Produto]
     let produtosTipos: [ProdutoTipos]
     let quantidadeProdutos: [[String]]
+    let ferramentas: [Ferramentas]
     
     var secar: Bool = true
 }
@@ -20,11 +21,12 @@ enum Superficies {
     static let porcelanato = Superficie(
         nome: "Porcelanato",
         produtos: [Produtos.agua, Produtos.detergente],
-        produtosTipos: [.morna, .alcalino],
+        produtosTipos: [.morna, .neutro],
         quantidadeProdutos: [
             ["pouca água", "media agua", "muita agua"],
             ["pouco detergente", "medio detergente", "muito detergente"]
-        ]
+        ],
+        ferramentas: [Ferramentas.pano]
     )
     static let madeira = Superficie(
         nome: "Madeira",
@@ -33,7 +35,9 @@ enum Superficies {
         quantidadeProdutos: [
             ["pouca água", "media agua", "muita agua"],
             ["pouco detergente", "medio detergente", "muito detergente"]
-        ]
+        ],
+        ferramentas: [Ferramentas.pano]
+
     )
     static let vidroDeBox = Superficie(
         nome: "Vidro de Box",
@@ -42,12 +46,16 @@ enum Superficies {
         quantidadeProdutos: [
             ["pouca água", "media agua", "muita agua"],
             ["pouco detergente", "medio detergente", "muito detergente"]
-        ]
+        ],
+        ferramentas: [Ferramentas.pano]
+
     )
 }
 
 func resultar(superficie: Superficie, nivelSujeira: Int, adicional: Sujeira) -> String {
-    var resultado = Receitas.misturarBalde.rawValue
+    var resultado = Receitas.misturarBalde.receita
+    
+    var ferramentasTotal = Set<Ferramentas>()
     
     // Determinar qual tipo de produto usar, duranto o for!!!
     
@@ -60,22 +68,28 @@ func resultar(superficie: Superficie, nivelSujeira: Int, adicional: Sujeira) -> 
             
             var tipos = superficie.produtosTipos
             
-//            if adicional.troca {
-//                
-//                for tipo in tipos {
-//                    
-//                    for adicional.trocaTipo in adicional.trocaTipo {
-//                        
-//                    }
-//                }
-//                
-//            }
+            if adicional.troca {
+                print("a")
+                for tipo in tipos {
+                    print("b")
+                    if let tipoTrocar = adicional.trocaTipo[tipo] {
+                        print(tipoTrocar.rawValue)
+                        tipos[tipos.firstIndex(of: tipo)!] = tipoTrocar
+                    }
+                    
+                    
+                }
+                
+            }
             
-            resultado = resultado.replacingCharacters(in:range, with: produto.nome + " " + superficie.produtosTipos[i].rawValue)
+            resultado = resultado.replacingCharacters(in:range, with: produto.nome + " " + tipos[i].rawValue)
         }
     }
     
+    ferramentasTotal = ferramentasTotal.union(superficie.ferramentas)
+    ferramentasTotal = ferramentasTotal.union(Receitas.misturarBalde.ferramentas)
     
+    print(ferramentasTotal)
     
     resultado += "\n" + adicional.receita
     

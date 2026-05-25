@@ -13,7 +13,7 @@ struct Sujeira: Hashable {
     
     let troca: Bool
     
-    var trocaTipo: [[ProdutoTipos]]?
+    let trocaTipo: [ProdutoTipos : ProdutoTipos]
 }
 
 
@@ -21,17 +21,21 @@ enum Sujeiras {
     static let poeira = Sujeira(
         nome: "Poeira",
         receita: "Umedecer um pano com álcool e esfregar na área com tinta de caneta",
-        troca: false
+        troca: false,
+        trocaTipo: [:]
     )
     static let mofo = Sujeira(
         nome: "Mofo",
         receita: "Como tirar mofo",
-        troca: false
+        troca: false,
+        trocaTipo: [:]
     )
     static let gordura = Sujeira(
         nome: "Gordura",
         receita: "Como tirar gordura",
         troca: true,
-        trocaTipo: [[.neutro, .alcalino]]
+        trocaTipo: [
+            .neutro: .alcalino
+        ]
     )
 }

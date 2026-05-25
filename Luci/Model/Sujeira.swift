@@ -18,14 +18,14 @@ struct Sujeira: Hashable {
 
 
 enum Sujeiras {
-    static let poeira = Sujeira(
-        nome: "Poeira",
+    static let organica = Sujeira(
+        nome: "Gorduras, restos de comida, sangue, mofo e fluidos corporais",
         receita: "Umedecer um pano com álcool e esfregar na área com tinta de caneta",
         troca: false,
         trocaTipo: [:]
     )
-    static let mofo = Sujeira(
-        nome: "Mofo",
+    static let mineral = Sujeira(
+        nome: "Terra, barro, calcário, cimento, ferrugem e incrustações de água",
         receita: "Como tirar mofo",
         troca: false,
         trocaTipo: [:]

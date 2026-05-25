@@ -3,7 +3,7 @@
 //  Luci
 //
 //  Created by João Duque Nardelli Wandermuren on 21/05/26.
-//
+
 
 import Foundation
 
@@ -19,7 +19,37 @@ struct Superficie: Hashable {
 
 enum Superficies {
     static let porcelanato = Superficie(
-        nome: "Porcelanato",
+        nome: "Piso de Porcelanato",
+        produtos: [Produtos.agua, Produtos.detergente],
+        produtosTipos: [.morna, .neutro],
+        quantidadeProdutos: [
+            ["pouca água", "media agua", "muita agua"],
+            ["pouco detergente", "medio detergente", "muito detergente"]
+        ],
+        ferramentas: [Ferramentas.pano]
+    )
+    static let vinilico = Superficie(
+        nome: "Piso Vinilico",
+        produtos: [Produtos.agua, Produtos.detergente],
+        produtosTipos: [.morna, .neutro],
+        quantidadeProdutos: [
+            ["pouca água", "media agua", "muita agua"],
+            ["pouco detergente", "medio detergente", "muito detergente"]
+        ],
+        ferramentas: [Ferramentas.pano]
+    )
+    static let ceramica = Superficie(
+        nome: "Piso de Cerâmica",
+        produtos: [Produtos.agua, Produtos.detergente],
+        produtosTipos: [.morna, .neutro],
+        quantidadeProdutos: [
+            ["pouca água", "media agua", "muita agua"],
+            ["pouco detergente", "medio detergente", "muito detergente"]
+        ],
+        ferramentas: [Ferramentas.pano]
+    )
+    static let laminado = Superficie(
+        nome: "Piso Laminado",
         produtos: [Produtos.agua, Produtos.detergente],
         produtosTipos: [.morna, .neutro],
         quantidadeProdutos: [
@@ -30,6 +60,17 @@ enum Superficies {
     )
     static let madeira = Superficie(
         nome: "Madeira",
+        produtos: [Produtos.agua, Produtos.detergente],
+        produtosTipos: [.morna, .neutro],
+        quantidadeProdutos: [
+            ["pouca água", "media agua", "muita agua"],
+            ["pouco detergente", "medio detergente", "muito detergente"]
+        ],
+        ferramentas: [Ferramentas.pano]
+
+    )
+    static let janela = Superficie(
+        nome: "Janela",
         produtos: [Produtos.agua, Produtos.detergente],
         produtosTipos: [.morna, .neutro],
         quantidadeProdutos: [

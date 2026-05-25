@@ -13,7 +13,7 @@ struct Sujeira: Hashable {
     
     let troca: Bool
     
-    var trocaTipo: [[ProdutoTipos]]?
+    var trocaTipo: [[ProdutoTipos]] = [[]]
 }
 
 
@@ -32,6 +32,8 @@ enum Sujeiras {
         nome: "Gordura",
         receita: "Como tirar gordura",
         troca: true,
-        trocaTipo: [[.neutro, .alcalino]]
+        trocaTipo: [
+            [.neutro, .alcalino]
+        ]
     )
 }

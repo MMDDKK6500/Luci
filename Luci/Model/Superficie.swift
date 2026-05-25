@@ -20,7 +20,7 @@ enum Superficies {
     static let porcelanato = Superficie(
         nome: "Porcelanato",
         produtos: [Produtos.agua, Produtos.detergente],
-        produtosTipos: [.morna, .alcalino],
+        produtosTipos: [.morna, .neutro],
         quantidadeProdutos: [
             ["pouca água", "media agua", "muita agua"],
             ["pouco detergente", "medio detergente", "muito detergente"]
@@ -60,18 +60,24 @@ func resultar(superficie: Superficie, nivelSujeira: Int, adicional: Sujeira) -> 
             
             var tipos = superficie.produtosTipos
             
-//            if adicional.troca {
-//                
-//                for tipo in tipos {
-//                    
-//                    for adicional.trocaTipo in adicional.trocaTipo {
-//                        
-//                    }
-//                }
-//                
-//            }
+            if adicional.troca {
+                print("a")
+                for tipo in tipos {
+                    print("b")
+                    for array in adicional.trocaTipo {
+                        print("c")
+                        if tipo == array[0] {
+                            print("d")
+                            tipos[tipos.firstIndex(of: tipo)!] = array[1]
+                        }
+                        
+                    }
+                    
+                }
+                
+            }
             
-            resultado = resultado.replacingCharacters(in:range, with: produto.nome + " " + superficie.produtosTipos[i].rawValue)
+            resultado = resultado.replacingCharacters(in:range, with: produto.nome + " " + tipos[i].rawValue)
         }
     }
     

@@ -12,6 +12,7 @@ struct Superficie: Hashable {
     let produtos: [Produto]
     let produtosTipos: [ProdutoTipos]
     let quantidadeProdutos: [[String]]
+    let ferramentas: [Ferramentas]
     
     var secar: Bool = true
 }
@@ -24,7 +25,8 @@ enum Superficies {
         quantidadeProdutos: [
             ["pouca água", "media agua", "muita agua"],
             ["pouco detergente", "medio detergente", "muito detergente"]
-        ]
+        ],
+        ferramentas: [Ferramentas.pano]
     )
     static let madeira = Superficie(
         nome: "Madeira",
@@ -33,7 +35,9 @@ enum Superficies {
         quantidadeProdutos: [
             ["pouca água", "media agua", "muita agua"],
             ["pouco detergente", "medio detergente", "muito detergente"]
-        ]
+        ],
+        ferramentas: [Ferramentas.pano]
+
     )
     static let vidroDeBox = Superficie(
         nome: "Vidro de Box",
@@ -42,12 +46,16 @@ enum Superficies {
         quantidadeProdutos: [
             ["pouca água", "media agua", "muita agua"],
             ["pouco detergente", "medio detergente", "muito detergente"]
-        ]
+        ],
+        ferramentas: [Ferramentas.pano]
+
     )
 }
 
 func resultar(superficie: Superficie, nivelSujeira: Int, adicional: Sujeira) -> String {
-    var resultado = Receitas.misturarBalde.rawValue
+    var resultado = Receitas.misturarBalde.receita
+    
+    var ferramentasTotal = Set<Ferramentas>()
     
     // Determinar qual tipo de produto usar, duranto o for!!!
     
@@ -78,7 +86,10 @@ func resultar(superficie: Superficie, nivelSujeira: Int, adicional: Sujeira) -> 
         }
     }
     
+    ferramentasTotal = ferramentasTotal.union(superficie.ferramentas)
+    ferramentasTotal = ferramentasTotal.union(Receitas.misturarBalde.ferramentas)
     
+    print(ferramentasTotal)
     
     resultado += "\n" + adicional.receita
     

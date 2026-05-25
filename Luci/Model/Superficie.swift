@@ -64,14 +64,11 @@ func resultar(superficie: Superficie, nivelSujeira: Int, adicional: Sujeira) -> 
                 print("a")
                 for tipo in tipos {
                     print("b")
-                    for array in adicional.trocaTipo {
-                        print("c")
-                        if tipo == array[0] {
-                            print("d")
-                            tipos[tipos.firstIndex(of: tipo)!] = array[1]
-                        }
-                        
+                    if let tipoTrocar = adicional.trocaTipo[tipo] {
+                        print(tipoTrocar.rawValue)
+                        tipos[tipos.firstIndex(of: tipo)!] = tipoTrocar
                     }
+                    
                     
                 }
                 

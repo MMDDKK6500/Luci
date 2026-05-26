@@ -30,24 +30,24 @@ struct RouterView: View {
             //Quando criar SplashView, tirar o comentário dessa linha, fazer o msm pras outras telas
 //                SplashView()
             
-            ContentView()
+            HomePage()
             
             .navigationDestination(for: Rotas.self) { destino in
                 switch destino {
                 case .splash:
 //                        SplashView()
-                    MisturaView()
+                    HomePage()
                 case .mistura:
-                    MisturaView()
+                    HomePage()
                 case .transicao:
 //                        TransicaoView()
-                    MisturaView()
+                    HomePage()
                 case .resultado:
 //                        ResultadoView()
-                    MisturaView()
+                    HomePage()
                 case .saibamais:
 //                        NoticiasView()
-                    MisturaView()
+                    HomePage()
                 }
             }
         }

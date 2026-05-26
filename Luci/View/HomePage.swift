@@ -11,19 +11,6 @@ struct HomePage: View {
                 ScrollView {
                     
                     VStack(spacing: 24) {
-                        
-                        HStack {
-                            Spacer()
-                            
-                            Image("Logo")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 90, height: 55)
-                            
-                            Spacer()
-                        }
-                        .padding(.top, 36)
-                        
                         Image("Baldedeagua")
                             .resizable()
                             .scaledToFit()
@@ -45,9 +32,16 @@ struct HomePage: View {
                         BotaoGerarSolucao()
                     }
                     .padding(.horizontal, 20)
-                    .padding(.bottom, 40)
+//                    .padding(.bottom, 40)
             }
         }
+            .toolbar {
+                ToolbarItem(placement: .title) {
+                    Image("Logo")
+                }
+                .sharedBackgroundVisibility(Visibility.hidden)
+            }
+
     }
 }
 

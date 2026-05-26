@@ -10,13 +10,7 @@ struct BotaoGerarSolucao: View {
 
     var body: some View {
 
-        NavigationLink {
-
-            TransformacaoPage()
-
-        } label: {
-
-            Text("Gerar solução")
+        NavigationLink("Gerar Solução", value: Rotas.transicao)
                 .font(.custom("Asap", size: 22))
                 .fontWeight(.bold)
                 .foregroundStyle(Color("Texto"))
@@ -25,10 +19,10 @@ struct BotaoGerarSolucao: View {
                     Capsule()
                         .fill(Color("Azul").opacity(0.45))
                 )
-        }
-        .buttonStyle(.plain)
+                .buttonStyle(.plain)
     }
 }
+
 #Preview {
 
     ZStack {

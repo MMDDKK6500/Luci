@@ -17,7 +17,7 @@ struct Sujeira: Hashable {
 }
 
 
-enum Sujeiras {
+enum Sujeiras: CaseIterable, Hashable {
     static let poeira = Sujeira(
         nome: "Poeira",
         receita: "Umedecer um pano com álcool e esfregar na área com tinta de caneta",
@@ -38,4 +38,10 @@ enum Sujeiras {
             .neutro: .alcalino
         ]
     )
+    
+    static let todos: [Sujeira] = [
+        Sujeiras.poeira,
+        Sujeiras.mofo,
+        Sujeiras.gordura
+    ]
 }

@@ -11,20 +11,13 @@ struct BotaoIniciar: View {
     
     var body: some View {
         
-        NavigationLink {
-
-            HomePage()
-            
-        } label: {
-            
-            Text("Iniciar")
+        NavigationLink("Iniciar", value: Rotas.mistura)
                 .font(.custom("Asap", size: 18))
                 .fontWeight(.bold)
                 .foregroundStyle(
                     Color(.white)
                 )
                 .frame(width: 320, height: 54)
-                
                 
                 .background(
                     .ultraThinMaterial,
@@ -39,7 +32,6 @@ struct BotaoIniciar: View {
                             lineWidth: 1
                         )
                 }
-        }
         .buttonStyle(.plain)
     }
 }

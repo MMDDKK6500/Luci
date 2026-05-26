@@ -3,9 +3,7 @@ import SwiftUI
 struct InicioPage: View {
     
     var body: some View {
-        
-        NavigationStack {
-            
+                    
             ZStack {
                 
                 Image("Fundoinicio")
@@ -30,7 +28,6 @@ struct InicioPage: View {
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-        }
     }
 }
 

@@ -50,6 +50,8 @@ enum Superficies {
         ferramentas: [Ferramentas.pano]
 
     )
+    
+    static let todos = [porcelanato, madeira, vidroDeBox]
 }
 
 func resultar(superficie: Superficie, nivelSujeira: Int, adicional: Sujeira) -> String {

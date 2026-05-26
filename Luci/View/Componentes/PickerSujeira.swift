@@ -1,7 +1,8 @@
 import SwiftUI
 
 struct PickerSujeira: View {
-    @State private var SujeiraSelecionada: Sujeira = Sujeiras.poeira
+    
+    @EnvironmentObject var router: Router
 
     @Namespace private var animation
 
@@ -21,7 +22,7 @@ struct PickerSujeira: View {
                     
                     
                     ForEach(Sujeiras.todos, id: \.self) { sujeira in
-                        SujeiraPickerButton(sujeira: $SujeiraSelecionada, sujeira2: sujeira)
+                        SujeiraPickerButton(sujeira: $router.tipoDeSujeira, sujeira2: sujeira)
                     }
                     
                 }

@@ -2,7 +2,7 @@ import SwiftUI
 
 struct PickerSuperficie: View {
 
-    @State private var superficieSelecionada: Superficie = Superficies.porcelanato
+    @EnvironmentObject var router: Router
 
     @Namespace private var animation
 
@@ -23,7 +23,7 @@ struct PickerSuperficie: View {
                     ForEach(Superficies.todos, id: \.self) { superficie in
 
                         SuperficiePickerButton(
-                            superficie: $superficieSelecionada,
+                            superficie: $router.qualSuperficie,
                             superficie2: superficie
                         )
                         

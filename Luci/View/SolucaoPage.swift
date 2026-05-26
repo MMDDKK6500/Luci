@@ -25,26 +25,34 @@ struct SolucaoPage: View {
             Image("Baldedeagua")
                 .resizable()
                 .scaledToFit()
+                .frame(maxHeight: 300)
 //                .padding(.bottom, 100)
-            
             ScrollView {
             Text("Solução gerada")
                 .font(.custom("Asap", size: 28))
-                .fontWeight(.medium)
+                .fontWeight(.semibold)
                 .foregroundStyle(Color("Texto"))
                 .padding(.bottom, 20)
             
                 HStack {
                     VStack(alignment: .leading) {
                         Text("Produtos para Mistura")
-                            .font(.title3)
+                            .font(.title2)
                             .bold()
+                            .padding(.bottom, 5)
                         Text("Água oxigenada 500ml")
+                        Rectangle()
+                            .frame(width: .infinity, height: 1)
                         Text("Água oxigenada 500ml")
+                        Rectangle()
+                            .frame(width: .infinity, height: 1)
                         Text("Água oxigenada 500ml")
                     }
                     Spacer()
                     Image("Frasco")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxWidth: 100)
                 }
                 .padding()
                 .background(
@@ -58,14 +66,19 @@ struct SolucaoPage: View {
                 HStack {
                     VStack(alignment: .leading) {
                         Text("Como fazer a mistura")
-                            .font(.title3)
+                            .font(.title2)
                             .bold()
+                            .padding(.bottom, 5)
                         Text("Misture em água")
+                        Rectangle()
+                            .frame(width: .infinity, height: 1)
                         Text("Adicione o líquido")
+                        Rectangle()
+                            .frame(width: .infinity, height: 1)
                         Text("Mecha tudo no recepiente")
                     }
                     Spacer()
-                    Image("imagem")
+                    Image("Luva")
                 }
                 .padding()
                 .background(
@@ -79,14 +92,19 @@ struct SolucaoPage: View {
                 HStack {
                     VStack(alignment: .leading) {
                         Text("Ferramentas para o uso")
-                            .font(.title3)
+                            .font(.title2)
                             .bold()
+                            .padding(.bottom, 5)
                         Text("Vassoura")
+                        Rectangle()
+                            .frame(width: .infinity, height: 1)
                         Text("Escovão")
+                        Rectangle()
+                            .frame(width: .infinity, height: 1)
                         Text("Rodô")
                     }
                     Spacer()
-                    Image("imagem")
+                    Image("Vassoura")
                 }
                 .padding()
                 .background(
@@ -99,12 +117,16 @@ struct SolucaoPage: View {
                 HStack {
                     VStack(alignment: .leading) {
                         Text("O que não se deve fazer")
-                            .font(.title3)
+                            .font(.title2)
                             .bold()
+                            .padding(.bottom, 5)
                         Text("Não deve-se misturar nesse produto álcool ou água oxigenada, cuidado com o uso exagerado de sabão")
                     }
                     Spacer()
-                    Image("imagem")
+                    Image("NaoFazer")
+//                        .resizable()
+                        .scaledToFit()
+                        .frame(maxHeight: 170)
                 }
                 .padding()
                 .background(

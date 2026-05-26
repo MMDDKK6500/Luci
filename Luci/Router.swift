@@ -16,6 +16,12 @@ class Router: ObservableObject {
     // Exemplo, um texto que todas as telas podem mudar e ler
     // PRECISA ser @Published, se não ele não é mostrado
     @Published var texto: String = "ola"
+    
+    @Published var nivel: Double = 1
+    
+    @Published var tipoDeSujeira: Sujeira = Sujeiras.poeira
+    
+    @Published var qualSuperficie: Superficie = Superficies.porcelanato
 }
 
 
@@ -40,7 +46,7 @@ struct RouterView: View {
                     HomePage()
                 case .transicao:
                     TransformacaoPage()
-                        .navigationBarBackButtonHidden(true)
+//                        .navigationBarBackButtonHidden(true)
                 case .resultado:
                     SolucaoPage()
                 case .saibamais:

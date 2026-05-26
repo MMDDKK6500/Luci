@@ -2,10 +2,11 @@ import SwiftUI
 
 struct BotaoVerResultado: View {
     
+    @EnvironmentObject var router: Router
+    
     var body: some View {
         
         NavigationLink {
-
             SolucaoPage()
             
         } label: {
@@ -19,6 +20,7 @@ struct BotaoVerResultado: View {
                 .frame(width: 320, height: 54)
                 
                 // LIQUID GLASS OFICIAL APPLE
+                // nn????
                 .background(
                     .ultraThinMaterial,
                     in: Capsule()
@@ -35,6 +37,9 @@ struct BotaoVerResultado: View {
                 }
         }
         .buttonStyle(.plain)
+        .onSubmit {
+            router.path.removeLast()
+        }
     }
 }
 

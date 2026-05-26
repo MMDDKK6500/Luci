@@ -3,9 +3,6 @@ import SwiftUI
 struct HomePage: View {
     
     var body: some View {
-        
-        NavigationStack {
-            
             ZStack {
                 
                 Color("Background")
@@ -49,7 +46,6 @@ struct HomePage: View {
                     }
                     .padding(.horizontal, 20)
                     .padding(.bottom, 40)
-                }
             }
         }
     }

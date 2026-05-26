@@ -8,12 +8,12 @@
 
 import SwiftUI
 
-struct SujeiraPickerButton: View {
+struct SuperficiePickerButton: View {
     
     @Namespace var animation
     
-    @Binding var sujeira: Sujeira
-    var sujeira2: Sujeira
+    @Binding var superficie: Superficie
+    var superficie2: Superficie
     
     var body: some View {
         Button {
@@ -24,12 +24,12 @@ struct SujeiraPickerButton: View {
                     dampingFraction: 0.75
                 )
             ) {
-                sujeira = sujeira2
+                superficie = superficie2
             }
 
         } label: {
 
-            Text(sujeira2.nome)
+            Text(superficie2.nome)
                 .font(.custom("Asap", size: 15))
                 .fontWeight(.semibold)
                 .foregroundStyle(Color("Texto"))
@@ -37,7 +37,7 @@ struct SujeiraPickerButton: View {
                 .padding(.vertical, 16)
 
                 .background {
-                    if sujeira == sujeira2 {
+                    if superficie == superficie2 {
                         
                         RoundedRectangle(cornerRadius: 24)
                             .fill(Color("Azul"))

@@ -2,15 +2,9 @@ import SwiftUI
 
 struct PickerSuperficie: View {
 
-    @State private var superficieSelecionada: String = "Porcelanato"
+    @State private var superficieSelecionada: Superficie = Superficies.porcelanato
 
     @Namespace private var animation
-
-    let superficies = [
-        "Porcelanato",
-        "Madeira",
-        "Vidro de box"
-    ]
 
     var body: some View {
 
@@ -26,45 +20,13 @@ struct PickerSuperficie: View {
                     .foregroundStyle(Color("Texto"))
                 HStack(spacing: 0) {
 
-                    ForEach(superficies, id: \.self) { superficie in
+                    ForEach(Superficies.todos, id: \.self) { superficie in
 
-                        Button {
-
-                            withAnimation(
-                                .spring(
-                                    response: 0.35,
-                                    dampingFraction: 0.75
-                                )
-                            ) {
-                                superficieSelecionada = superficie
-                            }
-
-                        } label: {
-
-                            Text(superficie)
-                                .font(.custom("Asap", size: 15))
-                                .fontWeight(.semibold)
-                                .foregroundStyle(Color("Texto"))            .frame(maxWidth: .infinity)
-                                .padding(.vertical, 16)
-
-                                .background {
-
-                                    if superficieSelecionada == superficie {
-
-                                        RoundedRectangle(cornerRadius: 24)
-                                            .fill(Color("Azul"))
-
-                                            // EFEITO DE PASSAGEM
-                                            .matchedGeometryEffect(
-                                                id: "TAB",
-                                                in: animation
-                                            )
-
-                                            .padding(4)
-                                    }
-                                }
-                        }
-                        .buttonStyle(.plain)
+                        SuperficiePickerButton(
+                            superficie: $superficieSelecionada,
+                            superficie2: superficie
+                        )
+                        
                     }
                 }
 

@@ -59,7 +59,6 @@ struct TransformacaoPage: View {
                 maxHeight: .infinity
             )
         }
-        .navigationBarBackButtonHidden(true)
     }
 }
 

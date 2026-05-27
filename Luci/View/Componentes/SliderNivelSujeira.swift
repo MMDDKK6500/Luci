@@ -9,10 +9,10 @@ import SwiftUI
 
 struct NivelSujeiraView: View {
 
-    @State private var nivel: Double = 1
+    @EnvironmentObject var router: Router
 
     var textoNivel: String {
-        switch nivel {
+        switch router.nivel {
         case 0: return "Leve"
         case 1: return "Média"
         default: return "Alta"
@@ -27,7 +27,7 @@ struct NivelSujeiraView: View {
                 .fontWeight(.medium)
                 .foregroundStyle(Color("Texto"))
 
-            Slider(value: $nivel, in: 0...2, step: 1)
+            Slider(value: $router.nivel, in: 0...2, step: 1)
                 .tint(Color("Azul"))
 
             HStack {

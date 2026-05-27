@@ -10,11 +10,12 @@ struct HomePage: View {
                 
                 ScrollView {
                     
-                    VStack(spacing: 24) {
+                    VStack {
                         Image("Baldedeagua")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 210, height: 235)
+                            .padding(.top, 20)
+                            .frame(width: 210, height: 250)
                         
                         Text("Vamos limpar?")
                             .font(
@@ -24,12 +25,18 @@ struct HomePage: View {
                             .foregroundStyle(Color("Texto"))
                         
                         PickerSuperficie()
+                            .padding(.vertical, 10)
                         
                         PickerSujeira()
-                        
+                            .padding(.vertical, 10)
+
                         NivelSujeiraView()
+                            .padding(.vertical, 10)
+                        
+                        Spacer()
                         
                         BotaoGerarSolucao()
+                            .padding(.top, 10)
                     }
                     .padding(.horizontal, 20)
 //                    .padding(.bottom, 40)
@@ -47,4 +54,5 @@ struct HomePage: View {
 
 #Preview {
     HomePage()
+        .environmentObject(Router())
 }

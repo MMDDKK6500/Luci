@@ -31,7 +31,7 @@ struct PickerSujeira: View {
                 .background(
 
                     RoundedRectangle(cornerRadius: 30)
-                        .fill(.ultraThinMaterial)
+                        .fill(.white)
 
                         .overlay {
 
@@ -50,7 +50,7 @@ struct PickerSujeira: View {
                         )
                 )
             }
-            .padding()
+            .padding(.horizontal)
     }
 }
 

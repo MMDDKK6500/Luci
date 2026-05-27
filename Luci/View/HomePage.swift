@@ -11,6 +11,29 @@ struct HomePage: View {
                 ScrollView {
                     
                     VStack(spacing: 24) {
+                        
+                        HStack {
+                            
+                            Spacer()
+                            
+                            Image("Logo")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 90, height: 55)
+                            
+                            Spacer()
+                        }
+                        .overlay(
+                            
+                            HStack {
+                                
+                                Spacer()
+                                
+                                InfoButton()
+                            }
+                        )
+                        .padding(.top, 36)
+                        
                         Image("Baldedeagua")
                             .resizable()
                             .scaledToFit()

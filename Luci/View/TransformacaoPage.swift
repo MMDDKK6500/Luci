@@ -9,6 +9,8 @@ import SwiftUI
 
 struct TransformacaoPage: View {
     
+    @EnvironmentObject var router: Router
+    
     var body: some View {
         
         ZStack {
@@ -58,6 +60,9 @@ struct TransformacaoPage: View {
                 maxWidth: .infinity,
                 maxHeight: .infinity
             )
+        }
+        .onAppear {
+            router.resultar()
         }
     }
 }

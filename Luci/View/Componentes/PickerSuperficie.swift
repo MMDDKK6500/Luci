@@ -34,7 +34,7 @@ struct PickerSuperficie: View {
                 .background(
 
                     RoundedRectangle(cornerRadius: 30)
-                        .fill(.white)
+                        .fill(Color("FundoBotão"))
 
                         .overlay {
 

@@ -27,6 +27,40 @@ struct TransformacaoPage: View {
                 .ignoresSafeArea()
             
             VStack {
+                Spacer()
+                Text("Variaveis selecionadas")
+                    .foregroundStyle(Color("TextoEscuro"))
+                    .font(Font.custom("Asap", size: 28))
+                    .fontWeight(.semibold)
+                
+                Text(router.qualSuperficie.nome)
+                    .foregroundStyle(Color("TextoEscuro"))
+                    .fontWeight(.semibold)
+                    .padding(4)
+                    .padding(.horizontal, 5 )
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color("TextoEscuro"), lineWidth: 1.5)
+                    )
+                Text(router.tipoDeSujeira.nome)
+                    .foregroundStyle(Color("TextoEscuro"))
+                    .fontWeight(.semibold)
+                    .padding(4)
+                    .padding(.horizontal, 5 )
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color("TextoEscuro"), lineWidth: 1.5)
+                    )
+                
+                Text(String(router.nivel))
+                    .foregroundStyle(Color("TextoEscuro"))
+                    .fontWeight(.semibold)
+                    .padding(4)
+                    .padding(.horizontal, 5 )
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color("TextoEscuro"), lineWidth: 1.5)
+                    )
                 
                 Spacer()
                 

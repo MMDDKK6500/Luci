@@ -103,9 +103,11 @@ struct SolucaoPage: View {
                                             .frame(width: .infinity, height: 1)
                                             .foregroundStyle(.black)
                                     }
+                                    
+                                    let numero = String(index + 1)
+                                    Text(numero + ". " + ferramenta.rawValue.capitalized)
+                                        .foregroundStyle(.black)
                                 }
-                                Text(ferramenta.rawValue.capitalized)
-                                    .foregroundStyle(.black)
                                 
                             }
                         }

@@ -13,7 +13,7 @@ struct BaldeAnimado: View {
     
     var body: some View {
         
-        Image("Baldetransformacao")
+        Image("Baldedeagua")
             .resizable()
             .scaledToFit()
             .frame(width: 440, height: 300)

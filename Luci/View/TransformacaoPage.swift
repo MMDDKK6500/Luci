@@ -28,22 +28,6 @@ struct TransformacaoPage: View {
             
             VStack {
                 
-                // LOGO
-                HStack {
-                    
-                    Spacer()
-                    
-                    
-                    
-                    Image("LogoInversa")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 90, height: 55)
-                    
-                    Spacer()
-                }
-                .padding(.top, 56)
-                
                 Spacer()
                 
                 
@@ -54,7 +38,7 @@ struct TransformacaoPage: View {
                 
                 // BOTÃO
                 BotaoVerResultado()
-                    .padding(.bottom, 50)
+                    .padding(.bottom, 80)
             }
             .frame(
                 maxWidth: .infinity,
@@ -63,6 +47,12 @@ struct TransformacaoPage: View {
         }
         .onAppear {
             router.resultar()
+        }
+        .toolbar {
+            ToolbarItem(placement: .title) {
+                Image("Logo")
+            }
+            .sharedBackgroundVisibility(Visibility.hidden)
         }
     }
 }

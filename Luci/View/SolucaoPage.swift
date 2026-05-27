@@ -74,6 +74,7 @@ struct SolucaoPage: View {
                                 .bold()
                                 .padding(.bottom, 5)
                             Text(router.resultado.instruções)
+                                .foregroundStyle(.black)
                         }
                         Spacer()
                         Image("Luva")

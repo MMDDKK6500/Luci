@@ -1,143 +1,112 @@
-//
-//  Superficie.swift
-//  Luci
-//
-//  Created by João Duque Nardelli Wandermuren on 21/05/26.
-
-
 import Foundation
 
 struct Superficie: Hashable {
     let nome: String
-    let produtos: [Produto]
-    let produtosTipos: [ProdutoTipos]
-    let quantidadeProdutos: [[String]]
-    let ferramentas: [Ferramentas]
-    
-    var secar: Bool = true
+    let compatibilidades: [CompatibilidadeProduto]
+    let secar: Bool
+}
+
+struct CompatibilidadeProduto: Hashable {
+    let produto: Produto
+    let quantidade: [String]
+    let ferramenta: Ferramenta
 }
 
 enum Superficies {
+    
+    // MARK: - Pisos
+
     static let porcelanato = Superficie(
         nome: "Piso de Porcelanato",
-        produtos: [Produtos.agua, Produtos.detergente],
-        produtosTipos: [.morna, .neutro],
-        quantidadeProdutos: [
-            ["pouca água", "media agua", "muita agua"],
-            ["pouco detergente", "medio detergente", "muito detergente"]
+        compatibilidades: [
+            CompatibilidadeProduto(
+                produto: Produtos.agua,
+                quantidade: ["Pouca água", "Média água", "Muita água" ],
+                ferramenta: .pano
+            ),
+
+            CompatibilidadeProduto(
+                produto: Produtos.detergenteNeutro,
+                quantidade: ["Pouco detergente", "Médio detergente", "Muito detergente" ],
+                ferramenta: .esponja
+            )
         ],
-        ferramentas: [Ferramentas.pano]
+        secar: true
     )
-    static let vinilico = Superficie(
-        nome: "Piso Vinilico",
-        produtos: [Produtos.agua, Produtos.detergente],
-        produtosTipos: [.morna, .neutro],
-        quantidadeProdutos: [
-            ["pouca água", "media agua", "muita agua"],
-            ["pouco detergente", "medio detergente", "muito detergente"]
-        ],
-        ferramentas: [Ferramentas.pano]
-    )
-    static let ceramica = Superficie(
-        nome: "Piso de Cerâmica",
-        produtos: [Produtos.agua, Produtos.detergente],
-        produtosTipos: [.morna, .neutro],
-        quantidadeProdutos: [
-            ["pouca água", "media agua", "muita agua"],
-            ["pouco detergente", "medio detergente", "muito detergente"]
-        ],
-        ferramentas: [Ferramentas.pano]
-    )
+
     static let laminado = Superficie(
         nome: "Piso Laminado",
-        produtos: [Produtos.agua, Produtos.detergente],
-        produtosTipos: [.morna, .neutro],
-        quantidadeProdutos: [
-            ["pouca água", "media agua", "muita agua"],
-            ["pouco detergente", "medio detergente", "muito detergente"]
+        compatibilidades: [
+            CompatibilidadeProduto(
+                produto: Produtos.agua,
+                quantidade: [ "Pouquíssima água", "Pouca água", "Média água" ],
+                ferramenta: .pano
+            )
         ],
-        ferramentas: [Ferramentas.pano]
+        secar: true
     )
+    
+    static let vinilico = Superficie(
+        nome: "Piso Vinilico",
+        compatibilidades: [
+            CompatibilidadeProduto(
+                produto: Produtos.agua,
+                quantidade: [ "Pouquíssima água", "Pouca água", "Média água" ],
+                ferramenta: .pano
+            )
+        ],
+        secar: true
+    )
+    
+    static let ceramica = Superficie(
+        nome: "Piso Ceramico",
+        compatibilidades: [
+            CompatibilidadeProduto(
+                produto: Produtos.agua,
+                quantidade: [ "Pouquíssima água", "Pouca água", "Média água" ],
+                ferramenta: .pano
+            )
+        ],
+        secar: true
+    )
+    
+    // MARK: - Movél de Planejado
+    
     static let madeira = Superficie(
         nome: "Madeira",
-        produtos: [Produtos.agua, Produtos.detergente],
-        produtosTipos: [.morna, .neutro],
-        quantidadeProdutos: [
-            ["pouca água", "media agua", "muita agua"],
-            ["pouco detergente", "medio detergente", "muito detergente"]
+        compatibilidades: [
+            CompatibilidadeProduto(
+                produto: Produtos.agua,
+                quantidade: [ "Pouquíssima água", "Pouca água", "Média água" ],
+                ferramenta: .pano
+            )
         ],
-        ferramentas: [Ferramentas.pano]
-
+        secar: true
     )
+    
+    // MARK: - Vidros
+    
     static let janela = Superficie(
-        nome: "Janela",
-        produtos: [Produtos.agua, Produtos.detergente],
-        produtosTipos: [.morna, .neutro],
-        quantidadeProdutos: [
-            ["pouca água", "media agua", "muita agua"],
-            ["pouco detergente", "medio detergente", "muito detergente"]
+        nome: "Vidro de Janela",
+        compatibilidades: [
+            CompatibilidadeProduto(
+                produto: Produtos.agua,
+                quantidade: [ "Pouquíssima água", "Pouca água", "Média água" ],
+                ferramenta: .pano
+            )
         ],
-        ferramentas: [Ferramentas.pano]
-
+        secar: true
     )
-    static let vidroDeBox = Superficie(
-        nome: "Vidro de Box",
-        produtos: [Produtos.agua, Produtos.detergente],
-        produtosTipos: [.morna, .neutro],
-        quantidadeProdutos: [
-            ["pouca água", "media agua", "muita agua"],
-            ["pouco detergente", "medio detergente", "muito detergente"]
+    
+    static let boxBanheiro = Superficie(
+        nome: "Vidro Box de Banheiro",
+        compatibilidades: [
+            CompatibilidadeProduto(
+                produto: Produtos.agua,
+                quantidade: [ "Pouquíssima água", "Pouca água", "Média água" ],
+                ferramenta: .pano
+            )
         ],
-        ferramentas: [Ferramentas.pano]
-
+        secar: true
     )
 }
-
-func resultar(superficie: Superficie, nivelSujeira: Int, adicional: Sujeira) -> String {
-    var resultado = Receitas.misturarBalde.receita
-    
-    var ferramentasTotal = Set<Ferramentas>()
-    
-    // Determinar qual tipo de produto usar, duranto o for!!!
-    
-    for i in 0...superficie.quantidadeProdutos.count - 1 {
-        if let range = resultado.range(of:"{QUANTIDADE}") {
-            resultado = resultado.replacingCharacters(in:range, with: superficie.quantidadeProdutos[i][nivelSujeira])
-        }
-        if let range = resultado.range(of:"{PRODUTO}") {
-            let produto = superficie.produtos[i]
-            
-            var tipos = superficie.produtosTipos
-            
-            if adicional.troca {
-                print("a")
-                for tipo in tipos {
-                    print("b")
-                    if let tipoTrocar = adicional.trocaTipo[tipo] {
-                        print(tipoTrocar.rawValue)
-                        tipos[tipos.firstIndex(of: tipo)!] = tipoTrocar
-                    }
-                    
-                    
-                }
-                
-            }
-            
-            resultado = resultado.replacingCharacters(in:range, with: produto.nome + " " + tipos[i].rawValue)
-        }
-    }
-    
-    ferramentasTotal = ferramentasTotal.union(superficie.ferramentas)
-    ferramentasTotal = ferramentasTotal.union(Receitas.misturarBalde.ferramentas)
-    
-    print(ferramentasTotal)
-    
-    resultado += "\n" + adicional.receita
-    
-    return resultado
-}
-
-// porcelanagto = detergente, normalmente neutro
-// gordura = detergente alcalino
-// produto = detergente alcalino
-

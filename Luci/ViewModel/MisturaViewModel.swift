@@ -13,16 +13,16 @@ import Combine
 // Colocar coisas como funções, lógica e tal da página Mistura
 class MisturaViewModel: ObservableObject {
     
-    func resultar(superfice: Superficie, tempo: Int, nivelSujeira: Int, adicional: Adicional) -> String {
-        var resultado = superfice.receita
-        
-        for i in 0...superfice.quantidades.count - 1 {
-            if let range = resultado.range(of:"{QUANTIDADE}") {
-                resultado = resultado.replacingCharacters(in:range, with: superfice.quantidades[i][nivelSujeira])
-            }
-        }
-        
-        return resultado
-    }
+//    func resultar(superfice: Superficie, tempo: Int, nivelSujeira: Int, adicional: Adicional) -> String {
+//        var resultado = superfice.receita
+//        
+//        for i in 0...superfice.quantidades.count - 1 {
+//            if let range = resultado.range(of:"{QUANTIDADE}") {
+//                resultado = resultado.replacingCharacters(in:range, with: superfice.quantidades[i][nivelSujeira])
+//            }
+//        }
+//        
+//        return resultado
+//    }
     
 }

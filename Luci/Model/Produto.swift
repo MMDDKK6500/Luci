@@ -1,89 +1,137 @@
-//
-//  Produto.swift
-//  Luci
-//
-//  Created by João Duque Nardelli Wandermuren on 22/05/26.
-//
+import Foundation
 
 struct Produto: Hashable {
     let nome: String
-    let tipos: [String]
-    let potencias: [Potencia]
+    let quantidade: String //precisa ser pego da NivelSujeira + Nivel que usuario escolher
+    let ferramenta: Ferramenta
+    let tipos: [ProdutoTipo]
+    let temperatura: Temperatura
+    let sujeiras: [Sujo]
+    let naoMisturarCom: [ProdutoNaoMistura]
 }
 
-enum ProdutoTipos: String {
-    case detergenteAcido, detergenteNeutro, detergenteAlcalino, aguaSanitaria, desifetanteAmonia, alcool
+// MARK: - Enums
+
+enum ProdutoNaoMistura: String, Hashable {
+    case detergenteAcido
+    case detergenteNeutro
+    case detergenteAlcalino
+    case aguaSanitaria
+    case desinfetanteAmonia
+    case alcool
+    case agua
+    case multiuso
 }
 
-enum Temperatura: String {
-    case fria, morna, neutro
+enum ProdutoTipo: String, Hashable {
+    case detergenteAcido
+    case detergenteNeutro
+    case detergenteAlcalino
+    case aguaSanitaria
+    case desinfetanteAmonia
+    case alcool
+    case agua
+    case multiuso
 }
 
-enum Potencia {
-    case fraco, medio, alto
+enum Temperatura: String, Hashable {
+    case fria
+    case morna
+    case neutra
+}
+
+enum Sujo: String, Hashable {
+    case gordura
+    case restoComida
+    case calcario
+    case ferrugem
+    case oxidacao
+    case terra
+    case mofo
+    case sangue
+    case fluidosCorporais
+    case tinta
 }
 
 enum Produtos {
-    
+
     static let agua = Produto(
-        nome: "água",
-        tipos: ["fria", "morna"],
-        potencias: [.fraco]
+        nome: "Água",
+        quantidade: "500ml",
+        ferramenta: .balde,
+        tipos: [.agua],
+        temperatura: .neutra,
+        sujeiras: [],
+        naoMisturarCom: []
+    )
+
+    static let desengordurante = Produto(
+        nome: "Desengordurante",
+        quantidade: "500ml",
+        ferramenta: .esponja,
+        tipos: [.detergenteAlcalino],
+        temperatura: .morna,
+        sujeiras: [.gordura, .restoComida, .fluidosCorporais],
+        naoMisturarCom: []
+    )
+
+    static let desencrustante = Produto(
+        nome: "Desencrustante",
+        quantidade: "1L",
+        ferramenta: .escova,
+        tipos: [.detergenteAcido],
+        temperatura: .fria,
+        sujeiras: [.calcario, .ferrugem, .oxidacao, .terra],
+        naoMisturarCom: [.aguaSanitaria]
+    )
+
+    static let detergenteNeutro = Produto(
+        nome: "Detergente Neutro",
+        quantidade: "500ml",
+        ferramenta: .esponja,
+        tipos: [.detergenteNeutro],
+        temperatura: .neutra,
+        sujeiras: [.gordura, .restoComida, .terra],
+        naoMisturarCom: []
     )
     
-    static let detergente = Produto(
-        nome: "detergente",
-        tipos: ["neutro", "alcalino"],
-        potencias: [.fraco, .medio]
+    static let multiuso = Produto(
+        nome: "MultiUso",
+        quantidade: "500ml",
+        ferramenta: .esponja,
+        tipos: [.detergenteNeutro],
+        temperatura: .neutra,
+        sujeiras: [.gordura, .restoComida, .terra],
+        naoMisturarCom: []
     )
     
-    static let desengordurantes = Produto(
-        nome: "Desengordurantes de Cozinha",
-        tipos: ["detergenteAlcalino"],
-        potencias: [.alto]
-    ) //Cif Desengordurante, Veja Cozinha Desengordurante ou Mr. Músculo
-    
-    static let sabaoEmPo = Produto(
-        nome: "Sabão em Pó e Lava-Roupas em Pó",
-        tipos: ["detergenteAlcalino"],
-        potencias: [.alto]
-    ) //Atuam como agentes alcalinos fortíssimos, utilizados para desinfetar superfícies e remover manchas de mofo ou bolor em banheiros e cozinhas.
-    
-    static let bicarbonato = Produto(
-        nome: "Bicarbonato de Sódio e Soda Cáustica",
-        tipos: ["detergenteAlcalino"],
-        potencias: [.alto]
+    static let vidro = Produto(
+        nome: "Limpa Vidros",
+        quantidade: "500ml",
+        ferramenta: .esponja,
+        tipos: [.detergenteNeutro],
+        temperatura: .neutra,
+        sujeiras: [.gordura, .restoComida, .terra],
+        naoMisturarCom: []
     )
-    
-    static let banheiro = Produto(
-        nome: "Limpadores de Banheiro",
-        tipos: ["detergenteAcido"],
-        potencias: [.alto]
-    ) //Harpic, Veja Banheiro
-    //Formulado com ácido clorídrico ou cítrico para remover marcas d'água, mofo e crostas do vaso sanitário.
-    
-    static let pedras = Produto(
-        nome: "Limpa Pedras",
-        tipos: ["detergenteAcido"],
-        potencias: [.alto]
-    ) //Bellinzoni Desincrustante, Limpador Ácido Pisoclean
-    //Ácidos desincrustantes ideais para a limpeza pós-obra em pedras brutas e pisos rústicos
-    
-    static let sanitaria = Produto(
-        nome: "Agua Sanitaria",
-        tipos: ["aguaSanitaria"],
-        potencias: [.medio]
+
+    static let aguaSanitaria = Produto(
+        nome: "Água Sanitária ou Alvejante",
+        quantidade: "1L",
+        ferramenta: .borrifador,
+        tipos: [.aguaSanitaria],
+        temperatura: .fria,
+        sujeiras: [.mofo, .sangue, .fluidosCorporais],
+        naoMisturarCom: [.alcool, .desinfetanteAmonia, .detergenteAcido]
     )
-    
-    static let pinho = Produto(
-        nome: "Desinfetantes à base de Pinho",
-        tipos: ["desifetanteAmonia"],
-        potencias: [.medio]
-    )
-    
-    static let alcool = Produto(
-        nome: "Alcool 70%",
-        tipos: ["alcool"],
-        potencias: [.medio]
+
+    static let alcool70 = Produto(
+        nome: "Álcool 70%",
+        quantidade: "500ml",
+        ferramenta: .pano,
+        tipos: [.alcool],
+        temperatura: .fria,
+        sujeiras: [.gordura, .tinta, .mofo],
+        naoMisturarCom: [.aguaSanitaria]
     )
 }

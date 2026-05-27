@@ -17,7 +17,7 @@ struct MisturaView: View {
     
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-        QuadradoFundoCor(text: router.texto, color: .indigo)
+        QuadradoFundoCor(text: resultar(superficie: Superficies.porcelanato, nivelSujeira: 2, adicional: Sujeiras.gordura),color: .rosa)
     }
 }
 

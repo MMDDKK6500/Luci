@@ -49,7 +49,7 @@ struct ContentView: View {
                     
                     Picker("Negocio", selection: $selectedCoiso) {
                         Text("Coisa").tag(Superficies.porcelanato)
-                        Text("Outro Coisa").tag(Superficies.outro)
+                        //Text("Outro Coisa").tag(Superficies.outro)
                     }.pickerStyle(.segmented)
                     
                     Slider(

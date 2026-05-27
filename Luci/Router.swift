@@ -30,28 +30,48 @@ class Router: ObservableObject {
 struct RouterView: View {
     @StateObject private var router = Router()
     
+    private var iPadOS = UIDevice.current.userInterfaceIdiom == .pad
+    
     var body: some View {
         NavigationStack(path: $router.path) {
             
             //Quando criar SplashView, tirar o comentário dessa linha, fazer o msm pras outras telas
 //                SplashView()
-            
             InicioPage()
             
             .navigationDestination(for: Rotas.self) { destino in
                 switch destino {
                 case .splash:
-                    InicioPage()
+                    if iPadOS {
+                        InicioPageIpad()
+                    } else {
+                        InicioPage()
+                    }
                 case .mistura:
-                    HomePage()
+                    if iPadOS {
+                        HomePageIpad()
+                    } else {
+                        HomePage()
+                    }
                 case .transicao:
-                    TransformacaoPage()
+                    if iPadOS {
+                        TransformacaoPageIpad()
+                    } else {
+                        TransformacaoPage()
+                    }
 //                        .navigationBarBackButtonHidden(true)
                 case .resultado:
-                    SolucaoPage()
+                    if iPadOS {
+                        SolucaoPageIpad()
+                    } else {
+                        SolucaoPage()
+                    }
                 case .saibamais:
 //                        NoticiasView()
-                    HomePage()
+                    if iPadOS {
+                        SaibaMaisPageIpad()
+                    }
+                    SaibaMaisPage()
                 }
             }
         }

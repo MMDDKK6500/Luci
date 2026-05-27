@@ -17,6 +17,7 @@ struct SheetCardInfo: View {
                 
                 VStack(spacing: 0) {
                     
+                    // TOPO
                     ZStack {
                         
                         Text(card.titulo)
@@ -25,28 +26,30 @@ struct SheetCardInfo: View {
                             .foregroundStyle(Color("Texto"))
                         
                         HStack {
+                            
                             Spacer()
                             
-                            Button {
-                                dismiss()
-                            } label: {
-                                Image(systemName: "xmark")
-                                    .font(.system(size: 20, weight: .bold))
-                                    .foregroundStyle(Color("Texto"))
-                                    .frame(width: 42, height: 42)
-                                    .background(.ultraThinMaterial, in: Circle())
-                                    .overlay {
-                                        Circle()
-                                            .stroke(Color.white.opacity(0.25), lineWidth: 1)
-                                    }
+                            // X DIFERENTE PARA IPAD E IPHONE
+                            if UIDevice.current.userInterfaceIdiom == .pad {
+                                
+                                FecharButtonIpad {
+                                    dismiss()
+                                }
+                                .padding(.trailing, 20)
+                                
+                            } else {
+                                
+                                FecharButton {
+                                    dismiss()
+                                }
+                                .padding(.trailing, 47)
                             }
-                            .buttonStyle(.plain)
-                            .padding(.trailing, 50)
                         }
                     }
                     .frame(height: 64)
                     .background(Color("Card"))
                     
+                    // IMAGEM
                     Image(card.imagem)
                         .resizable()
                         .scaledToFill()
@@ -54,6 +57,7 @@ struct SheetCardInfo: View {
                         .frame(maxWidth: .infinity)
                         .clipped()
                     
+                    // CONTEÚDO
                     VStack(alignment: .leading, spacing: 18) {
                         
                         Text(card.titulo)
@@ -63,8 +67,11 @@ struct SheetCardInfo: View {
                         
                         Text(card.conteudo)
                             .font(.custom("Asap", size: 14))
-                            .foregroundStyle(Color("Texto").opacity(0.9))
+                            .foregroundStyle(
+                                Color("Texto").opacity(0.9)
+                            )
                         
+                        // PROBLEMAS
                         Text("Problemas")
                             .font(.custom("Asap", size: 20))
                             .fontWeight(.bold)
@@ -72,30 +79,35 @@ struct SheetCardInfo: View {
                             .padding(.top, 8)
                         
                         VStack(alignment: .leading, spacing: 16) {
-                            ProblemaRow(
-                                titulo: "Risco de saúde",
-                                descricao: "Intoxicação respiratória causada pela liberação de gases tóxicos."
-                            )
                             
-                            ProblemaRow(
-                                titulo: "Queimaduras",
-                                descricao: "Misturas químicas podem causar irritações e queimaduras na pele."
-                            )
+                            ForEach(card.problemas) { problema in
+                                
+                                ProblemaRow(
+                                    titulo: problema.titulo,
+                                    descricao: problema.descricao
+                                )
+                            }
                         }
                         
+                        // RISCOS
                         Text("Riscos")
                             .font(.custom("Asap", size: 22))
                             .fontWeight(.bold)
                             .foregroundStyle(Color("Texto"))
                             .padding(.top, 8)
                         
-                        Text(card.conteudo)
+                        Text(card.riscos)
                             .font(.custom("Asap", size: 16))
-                            .foregroundStyle(Color("Texto").opacity(0.9))
+                            .foregroundStyle(
+                                Color("Texto").opacity(0.9)
+                            )
                     }
                     .padding(.horizontal, 45)
                     .padding(.vertical, 28)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .frame(
+                        maxWidth: .infinity,
+                        alignment: .leading
+                    )
                     .background(Color("Card"))
                 }
             }
@@ -103,6 +115,7 @@ struct SheetCardInfo: View {
         .navigationBarBackButtonHidden(true)
     }
 }
+
 #Preview {
     
     SheetCardInfo(
@@ -112,6 +125,7 @@ struct SheetCardInfo: View {
             descricao: "Fake news sobre limpeza",
             conteudo: "Misturas incorretas podem causar riscos à saúde.",
             problemas: [
+                
                 ProblemaInfo(
                     titulo: "Risco de saúde",
                     descricao: "Intoxicação respiratória causada por gases tóxicos."

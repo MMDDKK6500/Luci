@@ -16,14 +16,14 @@ struct SolucaoPage: View {
             
             Color("Background")
                 .ignoresSafeArea()
-            
+            ScrollView {
             VStack {
                 Image("Baldedeagua")
                     .resizable()
                     .scaledToFit()
                     .frame(maxHeight: 300)
                 //                .padding(.bottom, 100)
-                ScrollView {
+                
                     Text("Solução gerada")
                         .font(.custom("Asap", size: 28))
                         .fontWeight(.semibold)
@@ -33,22 +33,23 @@ struct SolucaoPage: View {
                     HStack {
                         VStack(alignment: .leading) {
                             Text("Produtos para Mistura")
-                                .foregroundStyle(Color("TextoEscuro"))
+                                .foregroundStyle(.black)
                                 .font(.title2)
                                 .bold()
                                 .padding(.bottom, 5)
-                            Text("Água oxigenada 500ml")
-                                .foregroundStyle(Color("TextoEscuro"))
-                            Rectangle()
-                                .frame(width: .infinity, height: 1)
-                                .foregroundStyle(Color("TextoEscuro"))
-                            Text("Água oxigenada 500ml")
-                                .foregroundStyle(Color("TextoEscuro"))
-                            Rectangle()
-                                .frame(width: .infinity, height: 1)
-                                .foregroundStyle(Color("TextoEscuro"))
-                            Text("Água oxigenada 500ml")
-                                .foregroundStyle(Color("TextoEscuro"))
+                            
+                            ForEach(router.resultado.produtosCompletos, id: \.self) { produto in
+                                
+                                if let index = router.resultado.produtosCompletos.firstIndex(of: produto) {
+                                    if (index > 0) {
+                                        Rectangle()
+                                            .frame(width: .infinity, height: 1)
+                                            .foregroundStyle(.black)
+                                    }
+                                }
+                                Text(produto.capitalized)
+                                    .foregroundStyle(.black)
+                            }
                         }
                         Spacer()
                         Image("Frasco")
@@ -68,22 +69,12 @@ struct SolucaoPage: View {
                     HStack {
                         VStack(alignment: .leading) {
                             Text("Como fazer a mistura")
-                                .foregroundStyle(Color("TextoEscuro"))
+                                .foregroundStyle(.black)
                                 .font(.title2)
                                 .bold()
                                 .padding(.bottom, 5)
-                            Text("Misture em água")
-                                .foregroundStyle(Color("TextoEscuro"))
-                            Rectangle()
-                                .frame(width: .infinity, height: 1)
-                                .foregroundStyle(Color("TextoEscuro"))
-                            Text("Adicione o líquido")
-                                .foregroundStyle(Color("TextoEscuro"))
-                            Rectangle()
-                                .frame(width: .infinity, height: 1)
-                                .foregroundStyle(Color("TextoEscuro"))
-                            Text("Mecha tudo no recepiente")
-                                .foregroundStyle(Color("TextoEscuro"))
+                            Text(router.resultado.instruções)
+                                .foregroundStyle(.black)
                         }
                         Spacer()
                         Image("Luva")
@@ -100,22 +91,25 @@ struct SolucaoPage: View {
                     HStack {
                         VStack(alignment: .leading) {
                             Text("Ferramentas para o uso")
-                                .foregroundStyle(Color("TextoEscuro"))
+                                .foregroundStyle(.black)
                                 .font(.title2)
                                 .bold()
                                 .padding(.bottom, 5)
-                            Text("Vassoura")
-                                .foregroundStyle(Color("TextoEscuro"))
-                            Rectangle()
-                                .frame(width: .infinity, height: 1)
-                                .foregroundStyle(Color("TextoEscuro"))
-                            Text("Escovão")
-                                .foregroundStyle(Color("TextoEscuro"))
-                            Rectangle()
-                                .frame(width: .infinity, height: 1)
-                                .foregroundStyle(Color("TextoEscuro"))
-                            Text("Rodô")
-                                .foregroundStyle(Color("TextoEscuro"))
+                            ForEach(router.resultado.ferramentas, id: \.self) { ferramenta in
+                                
+                                if let index = router.resultado.ferramentas.firstIndex(of: ferramenta) {
+                                    if (index > 0) {
+                                        Rectangle()
+                                            .frame(width: .infinity, height: 1)
+                                            .foregroundStyle(.black)
+                                    }
+                                    
+                                    let numero = String(index + 1)
+                                    Text(numero + ". " + ferramenta.rawValue.capitalized)
+                                        .foregroundStyle(.black)
+                                }
+                                
+                            }
                         }
                         Spacer()
                         Image("Vassoura")
@@ -131,12 +125,12 @@ struct SolucaoPage: View {
                     HStack {
                         VStack(alignment: .leading) {
                             Text("O que não se deve fazer")
-                                .foregroundStyle(Color("TextoEscuro"))
+                                .foregroundStyle(.black)
                                 .font(.title2)
                                 .bold()
                                 .padding(.bottom, 5)
-                            Text("Não deve-se misturar nesse produto álcool ou água oxigenada, cuidado com o uso exagerado de sabão")
-                                .foregroundStyle(Color("TextoEscuro"))
+                            Text(router.resultado.naoFazer)
+                                .foregroundStyle(.black)
                         }
                         Spacer()
                         Image("NaoFazer")

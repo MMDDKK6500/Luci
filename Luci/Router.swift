@@ -22,6 +22,67 @@ class Router: ObservableObject {
     @Published var tipoDeSujeira: Sujeira = Sujeiras.poeira
     
     @Published var qualSuperficie: Superficie = Superficies.porcelanato
+    
+    @Published var resultado: Resultado!
+    
+    func resultar() {
+        var resultado = Receitas.misturarBalde.receita
+        
+        var produtosCompletos: [String] = []
+        
+        var ferramentasTotal = Set<Ferramentas>()
+        
+        // Determinar qual tipo de produto usar, duranto o for!!!
+        
+        for i in 0...self.qualSuperficie.quantidadeProdutos.count - 1 {
+            if let range = resultado.range(of:"{PRODUTO}") {
+                let produto = self.qualSuperficie.produtos[i]
+                
+                var tipos = self.qualSuperficie.produtosTipos
+                
+                if self.tipoDeSujeira.troca {
+                    print("a")
+                    for tipo in tipos {
+                        print("b")
+                        if let tipoTrocar = self.tipoDeSujeira.trocaTipo[tipo] {
+                            print(tipoTrocar.rawValue)
+                            tipos[tipos.firstIndex(of: tipo)!] = tipoTrocar
+                        }
+                        
+                        
+                    }
+                    
+                }
+                
+                resultado = resultado.replacingCharacters(in:range, with: produto.nome + " " + tipos[i].rawValue)
+                produtosCompletos.append(produto.nome + " " + tipos[i].rawValue)
+            }
+            
+            if let range = resultado.range(of:"{QUANTIDADE}") {
+                resultado = resultado.replacingCharacters(in:range, with: self.qualSuperficie.quantidadeProdutos[i][Int(self.nivel)])
+                produtosCompletos[i] += " " + self.qualSuperficie.quantidadeProdutos[i][Int(self.nivel)]
+            }
+        }
+        
+        ferramentasTotal = ferramentasTotal.union(self.qualSuperficie.ferramentas)
+        ferramentasTotal = ferramentasTotal.union(Receitas.misturarBalde.ferramentas)
+        
+        
+        
+        resultado += "\n" + self.tipoDeSujeira.receita
+        
+        print(produtosCompletos)
+        print(ferramentasTotal)
+        
+        let results = Resultado(
+            instruções: resultado,
+            ferramentas: Array(ferramentasTotal),
+            produtosCompletos: produtosCompletos,
+            naoFazer: ""
+        )
+        
+        self.resultado = results
+    }
 }
 
 

@@ -9,6 +9,8 @@ import SwiftUI
 
 struct TransformacaoPage: View {
     
+    @EnvironmentObject var router: Router
+    
     var body: some View {
         
         ZStack {
@@ -25,22 +27,40 @@ struct TransformacaoPage: View {
                 .ignoresSafeArea()
             
             VStack {
+                Spacer()
+                Text("Variaveis selecionadas")
+                    .foregroundStyle(Color("TextoEscuro"))
+                    .font(Font.custom("Asap", size: 28))
+                    .fontWeight(.semibold)
                 
-                // LOGO
-                HStack {
-                    
-                    Spacer()
-                    
-                    
-                    
-                    Image("LogoInversa")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 90, height: 55)
-                    
-                    Spacer()
-                }
-                .padding(.top, 56)
+                Text(router.qualSuperficie.nome)
+                    .foregroundStyle(Color("TextoEscuro"))
+                    .fontWeight(.semibold)
+                    .padding(4)
+                    .padding(.horizontal, 5 )
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color("TextoEscuro"), lineWidth: 1.5)
+                    )
+                Text(router.tipoDeSujeira.nome)
+                    .foregroundStyle(Color("TextoEscuro"))
+                    .fontWeight(.semibold)
+                    .padding(4)
+                    .padding(.horizontal, 5 )
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color("TextoEscuro"), lineWidth: 1.5)
+                    )
+                
+                Text(String(router.nivel))
+                    .foregroundStyle(Color("TextoEscuro"))
+                    .fontWeight(.semibold)
+                    .padding(4)
+                    .padding(.horizontal, 5 )
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color("TextoEscuro"), lineWidth: 1.5)
+                    )
                 
                 Spacer()
                 
@@ -52,12 +72,21 @@ struct TransformacaoPage: View {
                 
                 // BOTÃO
                 BotaoVerResultado()
-                    .padding(.bottom, 50)
+                    .padding(.bottom, 80)
             }
             .frame(
                 maxWidth: .infinity,
                 maxHeight: .infinity
             )
+        }
+        .onAppear {
+            router.resultar()
+        }
+        .toolbar {
+            ToolbarItem(placement: .title) {
+                Image("Logo")
+            }
+            .sharedBackgroundVisibility(Visibility.hidden)
         }
     }
 }

@@ -6,12 +6,7 @@ struct BotaoVerResultado: View {
     
     var body: some View {
         
-        NavigationLink {
-            SolucaoPage()
-            
-        } label: {
-            
-            Text("Ver resultado")
+        NavigationLink("Ver resultado", value: Rotas.resultado)
                 .font(.custom("Asap", size: 18))
                 .fontWeight(.bold)
                 .foregroundStyle(
@@ -35,11 +30,7 @@ struct BotaoVerResultado: View {
                             lineWidth: 1
                         )
                 }
-        }
         .buttonStyle(.plain)
-        .onSubmit {
-            router.path.removeLast()
-        }
     }
 }
 

@@ -41,7 +41,7 @@ struct NivelSujeiraView: View {
             .fontWeight(.semibold)
             .foregroundStyle(Color("Texto"))
         }
-        .padding()
+        .padding(.horizontal)
     }
 }
 

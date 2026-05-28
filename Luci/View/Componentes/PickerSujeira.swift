@@ -5,6 +5,8 @@ struct PickerSujeira: View {
     @EnvironmentObject var router: Router
 
     @Namespace private var animation
+    
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
 
     var body: some View {
             VStack(alignment: .leading, spacing: 12) {
@@ -31,7 +33,7 @@ struct PickerSujeira: View {
                 .background(
 
                     RoundedRectangle(cornerRadius: 30)
-                        .fill(.ultraThinMaterial)
+                        .fill(Color("FundoBotão"))
 
                         .overlay {
 
@@ -50,7 +52,7 @@ struct PickerSujeira: View {
                         )
                 )
             }
-            .padding()
+            .padding(.horizontal)
     }
 }
 

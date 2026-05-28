@@ -6,11 +6,11 @@ struct InicioPage: View {
                     
             ZStack {
                 
-//                Image("Fundoinicio")
-//                    .resizable()
-//                    .scaledToFill()
-//                    .clipped()
-//                    .ignoresSafeArea()
+                Image("Fundoinicio")
+                    .resizable()
+                    .scaledToFill()
+                    .clipped()
+                    .ignoresSafeArea()
                 
                 VStack {
                     

@@ -79,21 +79,6 @@ struct SaibaMaisPageIpad: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 90, height: 55)
-                    
-                    HStack {
-                        Button {
-                            dismiss()
-                        } label: {
-                            Image(systemName: "chevron.left")
-                                .font(.system(size: 24, weight: .bold))
-                                .foregroundStyle(Color("Card"))
-                                .frame(width: 60, height: 48)
-                                .background(Color("Texto"), in: Circle())
-                        }
-                        .buttonStyle(.plain)
-                        
-                        Spacer()
-                    }
                 }
                 .padding(.horizontal, 32)
                 .padding(.top, 30)
@@ -124,7 +109,6 @@ struct SaibaMaisPageIpad: View {
                 Spacer()
             }
         }
-        .navigationBarBackButtonHidden(true)
         .sheet(item: $cardSelecionado) { card in
             SheetCardInfo(card: card)
                 .presentationDetents([.large])

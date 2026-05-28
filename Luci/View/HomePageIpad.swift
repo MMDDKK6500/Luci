@@ -18,14 +18,6 @@ struct HomePageIpad: View {
                             .resizable()
                             .scaledToFit()
                             .frame(width: 110, height: 60)
-                        
-                        HStack {
-                            
-                            Spacer()
-                            
-                            InfoButton()
-                        }
-                        .padding(.trailing, 40)
                     }
                     .padding(.top, 26)
                     
@@ -70,6 +62,15 @@ struct HomePageIpad: View {
                     
                     Spacer()
                 }
+            }
+            .toolbar {
+//                ToolbarItem(placement: .title) {
+//                    Image("Logo")
+//                }
+                ToolbarItem(placement: .topBarTrailing) {
+                    InfoButton()
+                }
+                .sharedBackgroundVisibility(Visibility.hidden)
             }
         }
 }

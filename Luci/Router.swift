@@ -113,43 +113,81 @@ struct RouterView: View {
             
             //Quando criar SplashView, tirar o comentário dessa linha, fazer o msm pras outras telas
 //                SplashView()
-            InicioPage()
-            
-            .navigationDestination(for: Rotas.self) { destino in
-                switch destino {
-                case .splash:
-                    if iPadOS {
-                        InicioPageIpad()
-                    } else {
-                        InicioPage()
+            if iPadOS {
+                InicioPageIpad()
+                    .navigationDestination(for: Rotas.self) { destino in
+                        switch destino {
+                        case .splash:
+                            if iPadOS {
+                                InicioPageIpad()
+                            } else {
+                                InicioPage()
+                            }
+                        case .mistura:
+                            if iPadOS {
+                                HomePageIpad()
+                            } else {
+                                HomePage()
+                            }
+                        case .transicao:
+                            if iPadOS {
+                                TransformacaoPageIpad()
+                            } else {
+                                TransformacaoPage()
+                            }
+                        case .resultado:
+                            if iPadOS {
+                                SolucaoPageIpad()
+                            } else {
+                                SolucaoPage()
+                            }
+                        case .saibamais:
+            //                        NoticiasView()
+                            if iPadOS {
+                                SaibaMaisPageIpad()
+                            } else {
+                                SaibaMaisPage()
+                            }
+                        }
                     }
-                case .mistura:
-                    if iPadOS {
-                        HomePageIpad()
-                    } else {
-                        HomePage()
+            } else {
+                InicioPage()
+                    .navigationDestination(for: Rotas.self) { destino in
+                        switch destino {
+                        case .splash:
+                            if iPadOS {
+                                InicioPageIpad()
+                            } else {
+                                InicioPage()
+                            }
+                        case .mistura:
+                            if iPadOS {
+                                HomePageIpad()
+                            } else {
+                                HomePage()
+                            }
+                        case .transicao:
+                            if iPadOS {
+                                TransformacaoPageIpad()
+                            } else {
+                                TransformacaoPage()
+                            }
+                        case .resultado:
+                            if iPadOS {
+                                SolucaoPageIpad()
+                            } else {
+                                SolucaoPage()
+                            }
+                        case .saibamais:
+            //                        NoticiasView()
+                            if iPadOS {
+                                SaibaMaisPageIpad()
+                            }
+                            SaibaMaisPage()
+                        }
                     }
-                case .transicao:
-                    if iPadOS {
-                        TransformacaoPageIpad()
-                    } else {
-                        TransformacaoPage()
-                    }
-//                        .navigationBarBackButtonHidden(true)
-                case .resultado:
-                    if iPadOS {
-                        SolucaoPageIpad()
-                    } else {
-                        SolucaoPage()
-                    }
-                case .saibamais:
-//                        NoticiasView()
-                    if iPadOS {
-                        SaibaMaisPageIpad()
-                    }
-                    SaibaMaisPage()
-                }
             }
+        
         }
         // Leva o objeto de roteador para todas as telas
         .environmentObject(router)

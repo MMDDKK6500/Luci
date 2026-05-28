@@ -52,7 +52,7 @@ enum Produtos {
     )
     
     static let multiuso = Produto(
-        nome: "multiuso",
+        nome: "produto multiuso",
         tipos: [.nenhum]
     )
     

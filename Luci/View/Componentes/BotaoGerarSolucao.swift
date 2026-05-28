@@ -1,13 +1,19 @@
 import SwiftUI
 
 struct BotaoGerarSolucao: View {
+    
+    @EnvironmentObject var router: Router
 
     var body: some View {
 
-        NavigationLink("Gerar Solução", value: Rotas.transicao)
+        Button {
+            router.path.append(Rotas.transicao)
+        } label: {
+
+            Text("Gerar Solução")
                 .font(.custom("Asap", size: 22))
                 .fontWeight(.bold)
-                .foregroundStyle(Color("Texto 1"))
+                .foregroundStyle(Color("Texto"))
                 .frame(width: 320, height: 54)
                 .background(
                     
@@ -23,7 +29,8 @@ struct BotaoGerarSolucao: View {
                             )
                         )
                 )
-                .buttonStyle(.plain)
+        }
+        .buttonStyle(.plain)
     }
 }
 
@@ -35,5 +42,6 @@ struct BotaoGerarSolucao: View {
             .ignoresSafeArea()
 
         BotaoGerarSolucao()
+            .environmentObject(Router())
     }
 }

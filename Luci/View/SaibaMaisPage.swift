@@ -2,6 +2,7 @@ import SwiftUI
 
 struct SaibaMaisPage: View {
     
+    @EnvironmentObject var router: Router
     @State private var cardSelecionado: CardInfo?
     
     let cards = [
@@ -122,11 +123,32 @@ Utilizar produtos incorretos pode causar danos às superfícies e riscos à saú
                 
                 VStack(spacing: 16) {
                     
-                    Image("Logo")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 90, height: 55)
-                        .padding(.top, 20)
+                    HStack {
+                        
+                        Button {
+                            if !router.path.isEmpty {
+                                router.path.removeLast()
+                            }
+                        } label: {
+                            Image(systemName: "chevron.left")
+                                .font(.system(size: 18, weight: .bold))
+                                .foregroundStyle(Color("Texto"))
+                                .frame(width: 42, height: 42)
+                                .background(.ultraThinMaterial, in: Circle())
+                        }
+                        .buttonStyle(.plain)
+                        
+                        Spacer()
+                        
+                        Image("Logo")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 90, height: 55)
+                        
+                        Spacer()
+                        
+                    }
+                    .padding(.top, 20)
                     
                     VStack(alignment: .leading, spacing: 16) {
                         
@@ -159,12 +181,11 @@ Utilizar produtos incorretos pode causar danos às superfícies e riscos à saú
                 .padding(.bottom, 40)
             }
         }
+        .toolbar(.hidden)
         .navigationBarBackButtonHidden(true)
         .sheet(item: $cardSelecionado) { card in
             SheetCardInfo(card: card)
-                .presentationDetents([
-                    .large
-                ])
+                .presentationDetents([.large])
                 .presentationCornerRadius(28)
                 .presentationBackground(Color("Card"))
                 .presentationDragIndicator(.visible)
@@ -175,5 +196,6 @@ Utilizar produtos incorretos pode causar danos às superfícies e riscos à saú
 #Preview {
     NavigationStack {
         SaibaMaisPage()
+            .environmentObject(Router())
     }
 }

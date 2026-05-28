@@ -51,6 +51,11 @@ enum Produtos {
         tipos: [.nenhum]
     )
     
+    static let multiuso = Produto(
+        nome: "produto multiuso",
+        tipos: [.nenhum]
+    )
+    
     static let naoMisturar: [Produto: [Produto]] =
     [
         aguaSanitaria:[alcool70, detergente, desencrustante, desengordurante, vinagre]

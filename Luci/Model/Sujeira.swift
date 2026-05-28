@@ -13,35 +13,45 @@ struct Sujeira: Hashable {
     
     let troca: Bool
     
+    let ferramentas: [Ferramentas]
+    
+    let produtos: [Produto]
+    
     let trocaTipo: [ProdutoTipos : ProdutoTipos]
 }
 
 
 enum Sujeiras: CaseIterable, Hashable {
-    static let poeira = Sujeira(
-        nome: "Poeira",
-        receita: "Umedecer um pano com álcool e esfregar na área com tinta de caneta",
+    static let ferrugem = Sujeira(
+        nome: "Ferrugem",
+        receita: "Passar um produto multiuso em uma escova, passando na ferrugem com força media, tomando cuidado para não danificar a superficie",
         troca: false,
+        ferramentas: [Ferramentas.escova],
+        produtos: [Produtos.multiuso],
         trocaTipo: [:]
     )
     static let mofo = Sujeira(
         nome: "Mofo",
-        receita: "Como tirar mofo",
+        receita: "Umedecer um pano com vinagre, esfregando na ferrugem com um pano ou esfregador",
         troca: false,
+        ferramentas: [Ferramentas.pano],
+        produtos: [Produtos.vinagre],
         trocaTipo: [:]
     )
-    static let gordura = Sujeira(
-        nome: "Gordura",
-        receita: "Como tirar gordura",
+    static let tinta = Sujeira(
+        nome: "Tinta",
+        receita: "Umedecer um pano com Alcool 70 e esfregar na área com tinta com força moderada a forte.",
         troca: true,
+        ferramentas: [Ferramentas.pano],
+        produtos: [Produtos.alcool70],
         trocaTipo: [
-            .neutro: .alcalino
+            :
         ]
     )
     
     static let todos: [Sujeira] = [
-        Sujeiras.poeira,
+        Sujeiras.ferrugem,
         Sujeiras.mofo,
-        Sujeiras.gordura
+        Sujeiras.tinta
     ]
 }

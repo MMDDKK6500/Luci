@@ -19,7 +19,7 @@ class Router: ObservableObject {
     
     @Published var nivel: Double = 1
     
-    @Published var tipoDeSujeira: Sujeira = Sujeiras.poeira
+    @Published var tipoDeSujeira: Sujeira = Sujeiras.ferrugem
     
     @Published var qualSuperficie: Superficie = Superficies.porcelanato
     
@@ -81,6 +81,13 @@ class Router: ObservableObject {
         ferramentasTotal = ferramentasTotal.union(Receitas.misturarBalde.ferramentas)
         
         resultado += "\n" + self.tipoDeSujeira.receita
+        
+        for produto in self.tipoDeSujeira.produtos {
+            if (produtosCompletos.contains(produto.nome)) {
+                continue
+            }
+            produtosCompletos.append(produto.nome)
+        }
         
         print(produtosCompletos)
         print(ferramentasTotal)

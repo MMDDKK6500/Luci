@@ -27,35 +27,35 @@ enum Superficies {
             ["500ml", "1L", "2L"],
             ["3 colheres", "5 colheres", "8 colheres"]
         ],
-        ferramentas: [Ferramentas.pano],
+        ferramentas: [Ferramentas.pano, Ferramentas.mop],
         receita: Receitas.misturarBalde
     )
-    static let madeira = Superficie(
-        nome: "Madeira",
+    static let vinilico = Superficie(
+        nome: "Vinilico",
         produtos: [Produtos.agua, Produtos.detergente],
         produtosTipos: [.morna, .neutro],
         quantidadeProdutos: [
             ["500ml", "1L", "2L"],
-            ["pouco detergente", "medio detergente", "muito detergente"]
+            ["3 colheres", "5 colheres", "8 colheres"]
         ],
-        ferramentas: [Ferramentas.pano],
+        ferramentas: [Ferramentas.pano, Ferramentas.mop],
         receita: Receitas.misturarBalde
 
     )
-    static let vidroDeBox = Superficie(
-        nome: "Vidro de Box",
+    static let lamindado = Superficie(
+        nome: "Laminado",
         produtos: [Produtos.agua, Produtos.detergente],
         produtosTipos: [.morna, .neutro],
         quantidadeProdutos: [
             ["500ml", "1L", "2L"],
-            ["pouco detergente", "medio detergente", "muito detergente"]
+            ["3 colheres", "5 colheres", "8 colheres"]
         ],
-        ferramentas: [Ferramentas.pano],
-        receita: Receitas.borrifador
+        ferramentas: [Ferramentas.pano, Ferramentas.mop],
+        receita: Receitas.misturarBalde
 
     )
     
-    static let todos = [porcelanato, madeira, vidroDeBox]
+    static let todos = [porcelanato, vinilico, lamindado]
 }
 
 // porcelanagto = detergente, normalmente neutro

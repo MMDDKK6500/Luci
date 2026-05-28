@@ -16,7 +16,7 @@ struct Receitas {
         ferramentas: [.vassoura]
     )
     static let misturarBalde = Receita(
-        receita: "Em um balde com {QUANTIDADE} de {PRODUTO} para o espaço do seu piso coloque {QUANTIDADE} de {PRODUTO}, misture até homogenio.\nAplique a mistura a superfície usando um pano limpo ou mop",
+        receita: "Em um balde com {QUANTIDADE} de {PRODUTO} podendo ser mais ou menos para o espaço do seu piso coloque {QUANTIDADE} de {PRODUTO} e misture até homogênio.\nAplique a mistura a superfície usando um pano limpo ou mop",
         ferramentas: [.mop, .pano, .balde]
     )
     

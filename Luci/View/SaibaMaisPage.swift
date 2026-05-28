@@ -123,33 +123,6 @@ Utilizar produtos incorretos pode causar danos às superfícies e riscos à saú
                 
                 VStack(spacing: 16) {
                     
-                    HStack {
-                        
-                        Button {
-                            if !router.path.isEmpty {
-                                router.path.removeLast()
-                            }
-                        } label: {
-                            Image(systemName: "chevron.left")
-                                .font(.system(size: 18, weight: .bold))
-                                .foregroundStyle(Color("Texto"))
-                                .frame(width: 42, height: 42)
-                                .background(.ultraThinMaterial, in: Circle())
-                        }
-                        .buttonStyle(.plain)
-                        
-                        Spacer()
-                        
-                        Image("Logo")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 90, height: 55)
-                        
-                        Spacer()
-                        
-                    }
-                    .padding(.top, 20)
-                    
                     VStack(alignment: .leading, spacing: 16) {
                         
                         Text("Saiba mais")
@@ -181,8 +154,12 @@ Utilizar produtos incorretos pode causar danos às superfícies e riscos à saú
                 .padding(.bottom, 40)
             }
         }
-        .toolbar(.hidden)
-        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .title) {
+                Image("Logo")
+            }
+            .sharedBackgroundVisibility(Visibility.hidden)
+        }
         .sheet(item: $cardSelecionado) { card in
             SheetCardInfo(card: card)
                 .presentationDetents([.large])

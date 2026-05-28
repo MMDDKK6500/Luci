@@ -14,43 +14,7 @@ struct SolucaoPage: View {
             
             ScrollView {
                 
-                VStack {
-                    
-                    // TOPO
-                    HStack {
-                        
-                        // BOTÃO VOLTAR
-                        Button {
-                            dismiss()
-                        } label: {
-                            
-                            Image(systemName: "chevron.left")
-                                .font(.system(size: 18, weight: .bold))
-                                .foregroundStyle(Color("Texto"))
-                                .frame(width: 42, height: 42)
-                                .background(
-                                    .ultraThinMaterial,
-                                    in: Circle()
-                                )
-                        }
-                        .buttonStyle(.plain)
-                        
-                        Spacer()
-                        
-                        // LOGO
-                        Image("Logo")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 90, height: 55)
-                        
-                        Spacer()
-                        
-                        // INFO BUTTON
-                        InfoButton()
-                    }
-                    .padding(.top, 20)
-                    .padding(.horizontal, 20)
-                    
+                VStack {                    
                     // IMAGEM
                     Image("Baldedeagua")
                         .resizable()
@@ -229,7 +193,15 @@ struct SolucaoPage: View {
                 .padding(.bottom, 40)
             }
         }
-        .toolbar(.hidden)
+        .toolbar {
+            ToolbarItem(placement: .title) {
+                Image("Logo")
+            }
+            ToolbarItem(placement: .topBarTrailing) {
+                InfoButton()
+            }
+            .sharedBackgroundVisibility(Visibility.hidden)
+        }
     }
 }
 

@@ -3,13 +3,7 @@ import SwiftUI
 struct InfoButton: View {
     
     var body: some View {
-        
-        NavigationLink {
-            SaibaMaisPage()
-        } label: {
-            
-            ZStack {
-                
+        ZStack {
                 Circle()
                     .fill(
                         LinearGradient(
@@ -31,9 +25,8 @@ struct InfoButton: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 40, height: 40)
+                NavigationLink("", value: Rotas.saibamais)
             }
-        }
-        .buttonStyle(.plain)
     }
 }
 

@@ -5,11 +5,11 @@ struct BotaoIniciarIpad: View {
     var body: some View {
         
         NavigationLink("Iniciar", value: Rotas.mistura)
-            .font(.custom("Asap", size: 28))
+            .font(.custom("Asap", size: 25))
             .fontWeight(.bold)
             .foregroundStyle(Color.white)
             
-            .frame(width: 420, height: 82)
+            .frame(width: 300, height: 60)
             
             .background(
                 .ultraThinMaterial,

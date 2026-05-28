@@ -11,6 +11,8 @@ struct TransformacaoPage: View {
     
     @EnvironmentObject var router: Router
     
+    @StateObject var viewModel: TransformacaoViewModel = TransformacaoViewModel()
+    
     var body: some View {
         
         ZStack {
@@ -52,7 +54,7 @@ struct TransformacaoPage: View {
                             .stroke(Color("TextoEscuro"), lineWidth: 1.5)
                     )
                 
-                Text(String(router.nivel))
+                Text(viewModel.nivelString(nivel: router.nivel))
                     .foregroundStyle(Color("TextoEscuro"))
                     .fontWeight(.semibold)
                     .padding(4)

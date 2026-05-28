@@ -53,8 +53,8 @@ struct SaibaMaisPageIpad: View {
         
         CardInfo(
             imagem: "CardProduto",
-            titulo: "Título Card",
-            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit muito bem descrito",
+            titulo: "Limpeza segura",
+            descricao: "Como limpar de forma correta e evitar riscos",
             conteudo: "A limpeza segura exige utilizar os produtos corretos para cada superfície, evitando misturas perigosas e substâncias abrasivas. Pisos laminados, madeira, mármore, carpetes e pedras naturais possuem restrições específicas e podem sofrer danos permanentes quando limpos de forma inadequada.",
             problemas: [
                 ProblemaInfo(titulo: "Danos às superfícies", descricao: "Produtos abrasivos podem desgastar e manchar materiais."),
@@ -74,14 +74,14 @@ struct SaibaMaisPageIpad: View {
             
             VStack(spacing: 0) {
                 
-                ZStack {
-                    Image("Logo")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 90, height: 55)
-                }
-                .padding(.horizontal, 32)
-                .padding(.top, 30)
+//                ZStack {
+//                    Image("Logo")
+//                        .resizable()
+//                        .scaledToFit()
+//                        .frame(width: 90, height: 55)
+//                }
+//                .padding(.horizontal, 32)
+//                .padding(.top, 30)
                 
                 Text("Conheça mais")
                     .font(.custom("Asap", size: 34))
@@ -108,6 +108,15 @@ struct SaibaMaisPageIpad: View {
                 
                 Spacer()
             }
+        }
+        .toolbar {
+            ToolbarItem(placement: .title) {
+                Image("Logo")
+            }
+//            ToolbarItem(placement: .topBarTrailing) {
+//                InfoButton()
+//            }
+            .sharedBackgroundVisibility(Visibility.hidden)
         }
         .sheet(item: $cardSelecionado) { card in
             SheetCardInfo(card: card)

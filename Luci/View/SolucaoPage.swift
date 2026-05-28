@@ -16,7 +16,7 @@ struct SolucaoPage: View {
                 
                 VStack {                    
                     // IMAGEM
-                    Image("Baldedeagua")
+                    Image("Balderesultado")
                         .resizable()
                         .scaledToFit()
                         .frame(maxHeight: 300)

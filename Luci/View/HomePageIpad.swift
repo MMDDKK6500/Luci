@@ -11,16 +11,6 @@ struct HomePageIpad: View {
                 
                 VStack(spacing: 0) {
                     
-                    // TOPO
-                    ZStack {
-                        
-                        Image("Logo")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 110, height: 60)
-                    }
-                    .padding(.top, 26)
-                    
                     Spacer()
                     
                     // CONTEÚDO
@@ -64,9 +54,9 @@ struct HomePageIpad: View {
                 }
             }
             .toolbar {
-//                ToolbarItem(placement: .title) {
-//                    Image("Logo")
-//                }
+                ToolbarItem(placement: .title) {
+                    Image("Logo")
+                }
                 ToolbarItem(placement: .topBarTrailing) {
                     InfoButton()
                 }

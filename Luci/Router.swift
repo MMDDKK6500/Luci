@@ -126,8 +126,10 @@ struct RouterView: View {
                         case .mistura:
                             if iPadOS {
                                 HomePageIpad()
+                                    .navigationBarBackButtonHidden(true)
                             } else {
                                 HomePage()
+                                    .navigationBarBackButtonHidden(true)
                             }
                         case .transicao:
                             if iPadOS {

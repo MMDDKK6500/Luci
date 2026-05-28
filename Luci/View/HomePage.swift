@@ -2,8 +2,6 @@ import SwiftUI
 
 struct HomePage: View {
     
-    @Environment(\.dismiss) private var dismiss
-    
     var body: some View {
         
         ZStack {

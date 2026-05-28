@@ -4,23 +4,21 @@ struct TransformacaoPageIpad: View {
     
     @EnvironmentObject var router: Router
     
+    @StateObject var viewModel = TransformacaoViewModel()
+    
     var body: some View {
         
         ZStack {
             
-//            Image("Fundotransformacao")
-//                .resizable()
-//                .scaledToFill()
-//                .ignoresSafeArea()
+            GeometryReader { geo in
+                Image("Fundotransformacao")
+                  .resizable()
+                  .scaledToFill()
+                  .rotationEffect(.degrees(90))
+                  .frame(width: geo.size.width, height: geo.size.height)
+            }
             
             VStack(spacing: 0) {
-                
-                // LOGO
-                Image("LogoInversa")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 95, height: 60)
-                    .padding(.top, 30)
                 
                 Spacer()
                 
@@ -51,7 +49,7 @@ struct TransformacaoPageIpad: View {
                             }
                             
                             VariavelTagIpad(
-                                texto: "Mancha nível \(router.nivel)"
+                                texto: "Mancha nível \(viewModel.nivelString(nivel: router.nivel))"
                             )
                         }
                         
@@ -69,7 +67,15 @@ struct TransformacaoPageIpad: View {
         .onAppear {
             router.resultar()
         }
-        .toolbar(.hidden)
+        .toolbar {
+            ToolbarItem(placement: .title) {
+                Image("Logo")
+            }
+//            ToolbarItem(placement: .topBarTrailing) {
+//                InfoButton()
+//            }
+            .sharedBackgroundVisibility(Visibility.hidden)
+        }
     }
 }
 

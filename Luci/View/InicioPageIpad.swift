@@ -6,12 +6,13 @@ struct InicioPageIpad: View {
         
         ZStack {
             
-//            Image("Fundoinicio")
-//                .resizable()
-//                .scaledToFill()
-//
-//                .rotationEffect(.degrees(90))
-//                .ignoresSafeArea()
+            GeometryReader { geo in
+                Image("Fundoinicio")
+                  .resizable()
+                  .scaledToFill()
+                  .rotationEffect(.degrees(90))
+                  .frame(width: geo.size.width, height: geo.size.height)
+            }
             
             VStack {
                 
@@ -20,17 +21,13 @@ struct InicioPageIpad: View {
                 Image("Logogrande")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 236, height: 126)
+                    .frame(width: 300, height: 200)
                 
                 Spacer()
                 
                 BotaoIniciarIpad()
-                    .padding(.bottom, 70)
+                    .padding(.bottom, 20)
             }
-            .frame(
-                maxWidth: .infinity,
-                maxHeight: .infinity
-            )
         }
     }
 }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct BaldeAnimado: View {
+struct BaldeAnimadoIpad: View {
     
     @State private var mover = false
     
@@ -16,7 +16,7 @@ struct BaldeAnimado: View {
         Image("Baldetransformacao")
             .resizable()
             .scaledToFit()
-            .frame(width: 440, height: 300)
+            .frame(width: 500, height: 500)
             // ANIMAÇÃO
             .rotationEffect(
                 .degrees(mover ? 15 : -15)
@@ -41,6 +41,6 @@ struct BaldeAnimado: View {
         Color("Background")
             .ignoresSafeArea()
         
-        BaldeAnimado()
+        BaldeAnimadoIpad()
     }
 }

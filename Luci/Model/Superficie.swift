@@ -13,6 +13,7 @@ struct Superficie: Hashable {
     let produtosTipos: [ProdutoTipos]
     let quantidadeProdutos: [[String]]
     let ferramentas: [Ferramentas]
+    let receita: Receita
     
     var secar: Bool = true
 }
@@ -23,20 +24,22 @@ enum Superficies {
         produtos: [Produtos.agua, Produtos.detergente],
         produtosTipos: [.morna, .neutro],
         quantidadeProdutos: [
-            ["pouca água", "media agua", "muita agua"],
-            ["pouco detergente", "medio detergente", "muito detergente"]
+            ["500ml", "1L", "2L"],
+            ["3 colheres", "5 colheres", "8 colheres"]
         ],
-        ferramentas: [Ferramentas.pano]
+        ferramentas: [Ferramentas.pano],
+        receita: Receitas.misturarBalde
     )
     static let madeira = Superficie(
         nome: "Madeira",
         produtos: [Produtos.agua, Produtos.detergente],
         produtosTipos: [.morna, .neutro],
         quantidadeProdutos: [
-            ["pouca água", "media agua", "muita agua"],
+            ["500ml", "1L", "2L"],
             ["pouco detergente", "medio detergente", "muito detergente"]
         ],
-        ferramentas: [Ferramentas.pano]
+        ferramentas: [Ferramentas.pano],
+        receita: Receitas.misturarBalde
 
     )
     static let vidroDeBox = Superficie(
@@ -44,10 +47,11 @@ enum Superficies {
         produtos: [Produtos.agua, Produtos.detergente],
         produtosTipos: [.morna, .neutro],
         quantidadeProdutos: [
-            ["pouca água", "media agua", "muita agua"],
+            ["500ml", "1L", "2L"],
             ["pouco detergente", "medio detergente", "muito detergente"]
         ],
-        ferramentas: [Ferramentas.pano]
+        ferramentas: [Ferramentas.pano],
+        receita: Receitas.borrifador
 
     )
     

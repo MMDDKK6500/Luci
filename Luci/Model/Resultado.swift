@@ -11,5 +11,5 @@ struct Resultado {
     let instruções: String
     let ferramentas: [Ferramentas]
     let produtosCompletos: [String]
-    let naoFazer: String
+    let naoFazer: [Produto]
 }

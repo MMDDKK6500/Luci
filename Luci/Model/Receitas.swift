@@ -22,8 +22,9 @@ struct Receitas {
     
     static let borrifador = Receita(
         receita: "Em um borrifaddor, misture {QUANTIDADE} de {PRODUTO} com {QUANTIDADE} de {PRODUTO}, misture até homogenio.\nBorrife a mistura em um pano limpo e aplique na superficie",
-        ferramentas: [.pano]
+        ferramentas: [.pano, .borrifador]
     )
     
+    // Colocar para a receita adicional
     static let tipoSujeira = ""
 }

@@ -129,8 +129,19 @@ struct SolucaoPage: View {
                                 .font(.title2)
                                 .bold()
                                 .padding(.bottom, 5)
-                            Text(router.resultado.naoFazer)
-                                .foregroundStyle(.black)
+                            ForEach(router.resultado.naoFazer, id: \.self) { naoPode in
+                                
+                                if let index = router.resultado.naoFazer.firstIndex(of: naoPode) {
+                                    if (index > 0) {
+                                        Rectangle()
+                                            .frame(width: .infinity, height: 1)
+                                            .foregroundStyle(.black)
+                                    }
+                                    
+                                    Text(naoPode.nome)
+                                        .foregroundStyle(.black)
+                                }
+                            }
                         }
                         Spacer()
                         Image("NaoFazer")

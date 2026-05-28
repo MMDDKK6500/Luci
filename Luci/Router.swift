@@ -26,9 +26,11 @@ class Router: ObservableObject {
     @Published var resultado: Resultado!
     
     func resultar() {
-        var resultado = Receitas.misturarBalde.receita
+        var resultado = self.qualSuperficie.receita.receita
         
         var produtosCompletos: [String] = []
+        
+        var naoPode: [Produto] = []
         
         var ferramentasTotal = Set<Ferramentas>()
         
@@ -37,6 +39,12 @@ class Router: ObservableObject {
         for i in 0...self.qualSuperficie.quantidadeProdutos.count - 1 {
             if let range = resultado.range(of:"{PRODUTO}") {
                 let produto = self.qualSuperficie.produtos[i]
+                
+                for dics in Produtos.naoMisturar {
+                    if (self.qualSuperficie.produtos.contains(dics.key)) {
+                        naoPode = dics.value
+                    }
+                }
                 
                 var tipos = self.qualSuperficie.produtosTipos
                 
@@ -54,8 +62,13 @@ class Router: ObservableObject {
                     
                 }
                 
-                resultado = resultado.replacingCharacters(in:range, with: produto.nome + " " + tipos[i].rawValue)
-                produtosCompletos.append(produto.nome + " " + tipos[i].rawValue)
+                if tipos.contains(ProdutoTipos.nenhum) {
+                    resultado = resultado.replacingCharacters(in:range, with: produto.nome)
+                    produtosCompletos.append(produto.nome)
+                } else {
+                    resultado = resultado.replacingCharacters(in:range, with: produto.nome + " " + tipos[i].rawValue)
+                    produtosCompletos.append(produto.nome + " " + tipos[i].rawValue)
+                }
             }
             
             if let range = resultado.range(of:"{QUANTIDADE}") {
@@ -67,18 +80,20 @@ class Router: ObservableObject {
         ferramentasTotal = ferramentasTotal.union(self.qualSuperficie.ferramentas)
         ferramentasTotal = ferramentasTotal.union(Receitas.misturarBalde.ferramentas)
         
-        
-        
         resultado += "\n" + self.tipoDeSujeira.receita
         
         print(produtosCompletos)
         print(ferramentasTotal)
         
+        if (naoPode.isEmpty) {
+            naoPode.append(Produto(nome: "Nenhuma recomendação.", tipos: []))
+        }
+        
         let results = Resultado(
             instruções: resultado,
             ferramentas: Array(ferramentasTotal),
             produtosCompletos: produtosCompletos,
-            naoFazer: ""
+            naoFazer: naoPode
         )
         
         self.resultado = results

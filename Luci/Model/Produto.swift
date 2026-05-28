@@ -11,7 +11,7 @@ struct Produto: Hashable {
 }
 
 enum ProdutoTipos: String {
-    case fria, morna, neutro, alcalino
+    case nenhum, fria, morna, neutro, alcalino
 }
 
 enum Produtos {
@@ -28,28 +28,31 @@ enum Produtos {
     
     static let desengordurante = Produto(
         nome: "desengordurante",
-        tipos: []
+        tipos: [.nenhum]
     )
     
     static let desencrustante = Produto(
         nome: "desencrustante",
-        tipos: []
+        tipos: [.nenhum]
     )
     
     static let aguaSanitaria = Produto(
         nome: "água sanitaria",
-        tipos: []
+        tipos: [.nenhum]
     )
     
     static let alcool70 = Produto(
         nome: "álcool 70%",
-        tipos: []
+        tipos: [.nenhum]
     )
     
     static let vinagre = Produto(
         nome: "vinagre",
-        tipos: []
+        tipos: [.nenhum]
     )
     
-    static let naoMisturar: [Produto: [Produto]] = [aguaSanitaria:[alcool70, detergente, desencrustante, desengordurante, vinagre]]
+    static let naoMisturar: [Produto: [Produto]] =
+    [
+        aguaSanitaria:[alcool70, detergente, desencrustante, desengordurante, vinagre]
+    ]
 }

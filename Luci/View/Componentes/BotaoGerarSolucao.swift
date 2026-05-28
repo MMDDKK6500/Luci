@@ -1,9 +1,3 @@
-//
-//  BotaoGerarSolucao.swift
-//  Luci
-//
-//  Created by Isabella Avelina on 22/05/26.
-//
 import SwiftUI
 
 struct BotaoGerarSolucao: View {
@@ -13,11 +7,21 @@ struct BotaoGerarSolucao: View {
         NavigationLink("Gerar Solução", value: Rotas.transicao)
                 .font(.custom("Asap", size: 22))
                 .fontWeight(.bold)
-                .foregroundStyle(Color("Texto"))
+                .foregroundStyle(Color("Texto 1"))
                 .frame(width: 320, height: 54)
                 .background(
+                    
                     Capsule()
-                        .fill(Color("Azul").opacity(0.45))
+                        .fill(
+                            LinearGradient(
+                                colors: [
+                                    Color("AzulEscuro"),
+                                    Color("AzulEscuro")
+                                ],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            )
+                        )
                 )
                 .buttonStyle(.plain)
     }
@@ -26,6 +30,9 @@ struct BotaoGerarSolucao: View {
 #Preview {
 
     ZStack {
+
+        Color("Background")
+            .ignoresSafeArea()
 
         BotaoGerarSolucao()
     }
